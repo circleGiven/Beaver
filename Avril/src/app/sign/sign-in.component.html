@@ -1,0 +1,25 @@
+<div class="am-signin-wrapper">
+  <div class="am-signin-box">
+    <div class="row no-gutters">
+      <div class="col-lg-5">
+        <div>
+          <h2>Avril</h2>
+          <p>Angular project</p>
+          <hr>
+          <p>Don't have an account? <br> <a [routerLink]="'/sign/signup'">Sign up Now</a></p>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <h5 class="tx-gray-800 mg-b-25">Signin to Your Account</h5>
+
+        <component-form-input [name]="'Email'" [placeHolder]="'Enter your email address'" [type]="'email'"></component-form-input>
+        <component-form-input [name]="'Password'" [placeHolder]="'Enter your password'" [type]="'password'"></component-form-input>
+
+        <div class="form-group mg-b-20"><a href="">Reset password</a></div>
+
+        <button class="btn btn-block">Sign In</button>
+      </div><!-- col-7 -->
+    </div><!-- row -->
+    <p class="tx-center tx-white-5 tx-12 mg-t-15">Copyright &copy; 2019. All Rights Reserved. by circlegiven</p>
+  </div><!-- signin-box -->
+</div>
