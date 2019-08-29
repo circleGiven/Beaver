@@ -23,7 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/lib/font-awesome/css/font-awesome.css",
+              "src/assets/lib/Ionicons/css/ionicons.css",
+              "src/assets/lib/perfect-scrollbar/css/perfect-scrollbar.css",
+              "src/assets/lib/jquery-toggles/toggles-full.css",
+              "src/assets/lib/rickshaw/rickshaw.min.css",
+              "src/assets/css/amanda.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

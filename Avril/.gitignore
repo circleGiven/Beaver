@@ -47,3 +47,6 @@ Thumbs.db
 
 # package.json
 package-lock.json
+
+# bootstrap HTML template
+/src/template
