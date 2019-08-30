@@ -1,28 +1,29 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, Subject, Subscription} from "rxjs";
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class LnbService {
 
-  subjectOnChangeStatus$ = new Subject();
-  subjectChangedStatus$ = new Subject();
+  // observables
+  private changeStatusObservable$ = new Subject();
+  private changedStatusObservable$ = new Subject();
 
   constructor() {
   }
 
-  onChangeStatus() {
-    this.subjectOnChangeStatus$.next();
+  notificationChangeStatus() {
+    this.changeStatusObservable$.next();
   }
 
-  onChangedStatus(value: boolean) {
-    this.subjectChangedStatus$.next(value);
+  notificationChangedStatus(value: boolean) {
+    this.changedStatusObservable$.next(value);
   }
 
-  subscribeChangeStatus() {
-    return this.subjectOnChangeStatus$.asObservable();
+  observerChangeStatus() {
+    return this.changeStatusObservable$.asObservable();
   }
 
-  subscribeChangedStatus() {
-    return this.subjectChangedStatus$.asObservable();
+  observerChangedStatus() {
+    return this.changedStatusObservable$.asObservable();
   }
 }

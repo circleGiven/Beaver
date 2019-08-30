@@ -8,24 +8,27 @@ import {LnbService} from "./lnb.service";
 })
 export class LnbComponent implements OnInit {
 
-  status: boolean = true;
+  status;
 
   constructor(private lnbService: LnbService) { }
 
   ngOnInit() {
-    this.lnbService.subscribeChangeStatus().subscribe(() => {
-      this._changeStatus();
+    // initial
+    this.changeStatus();
+    // subscribe
+    this.lnbService.observerChangeStatus().subscribe(() => {
+      this.changeStatus();
     });
   }
 
-  _changeStatus() {
+  private changeStatus() {
     if (this.status === true) {
       this.status = false;
     } else {
       this.status = true;
     }
     // body class 변경 호출
-    this.lnbService.onChangedStatus(this.status);
+    this.lnbService.notificationChangedStatus(this.status);
   }
 
 }

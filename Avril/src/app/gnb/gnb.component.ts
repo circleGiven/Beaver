@@ -12,6 +12,6 @@ export class GnbComponent {
   }
 
   onClickMenuHamburg(): void {
-    this.lnbService.onChangeStatus();
+    this.lnbService.notificationChangeStatus();
   }
 }
