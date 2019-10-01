@@ -4,5 +4,4 @@ import {Component} from '@angular/core';
   templateUrl: 'sign-up.component.html'
 })
 export class SignUpComponent {
-
 }

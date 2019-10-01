@@ -3,21 +3,29 @@
     <div class="row no-gutters">
       <div class="col-lg-5">
         <div>
-          <h2>Avril</h2>
-          <p>Angular project</p>
+          <h2>Beaver</h2>
           <hr>
           <p>Don't have an account? <br> <a [routerLink]="'/sign/signup'">Sign up Now</a></p>
+          <p>Forgot password?<br> <a [routerLink]="'/sign/reset'">Reset password</a></p>
         </div>
       </div>
       <div class="col-lg-7">
         <h5 class="tx-gray-800 mg-b-25">Signin to Your Account</h5>
-
-        <component-form-input [name]="'Email'" [placeHolder]="'Enter your email address'" [type]="'email'"></component-form-input>
-        <component-form-input [name]="'Password'" [placeHolder]="'Enter your password'" [type]="'password'"></component-form-input>
-
-        <div class="form-group mg-b-20"><a href="">Reset password</a></div>
-
-        <button class="btn btn-block">Sign In</button>
+        <form [formGroup]="form" (ngSubmit)="loginHandler()">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
+            <input type="text" class="form-control parsley-error" placeholder="Username" formControlName="email">
+          </div>
+          <ul class="parsley-errors-list filled"><li class="parsley-required">This username is required.</li></ul>
+          <div style="padding: 10px"></div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon ion-key tx-16 lh-1 op-6" style="width: 12px"></i></span>
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+          </div>
+          <ul class="parsley-errors-list filled"><li class="parsley-required">This password is required.</li></ul>
+          <div style="padding: 10px"></div>
+          <button class="btn btn-block">Sign In</button>
+        </form>
       </div><!-- col-7 -->
     </div><!-- row -->
     <p class="tx-center tx-white-5 tx-12 mg-t-15">Copyright &copy; 2019. All Rights Reserved. by circlegiven</p>
