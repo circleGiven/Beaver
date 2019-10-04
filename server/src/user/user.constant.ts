@@ -5,4 +5,8 @@ export namespace UserConstant {
         SUCCESS_USER_CREATED = '사용자가 생성되었습니다.',
         SUCCESS_USER_REMOVED = '사용자가 제거되었습니다.',
     }
+
+    export enum PasswordAlgorithm {
+        SHA256 = 'sha256',
+    }
 }
