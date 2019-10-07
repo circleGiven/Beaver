@@ -1,16 +1,20 @@
 import { ApiModelProperty } from '@nestjs/swagger';
+import {IsOptional, IsString} from 'class-validator';
 
 export class UpdateUserDto {
 
     @ApiModelProperty()
-    readonly name: string;
+    @IsOptional()
+    @IsString()
+    readonly name?: string;
 
     @ApiModelProperty()
-    readonly email: string;
+    @IsOptional()
+    @IsString()
+    readonly password?: string;
 
     @ApiModelProperty()
-    readonly password: string;
-
-    @ApiModelProperty()
-    readonly confirmPassword: string;
+    @IsOptional()
+    @IsString()
+    readonly confirmPassword?: string;
 }

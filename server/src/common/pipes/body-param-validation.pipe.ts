@@ -2,6 +2,7 @@ import {ArgumentMetadata, BadRequestException, Injectable, PipeTransform} from '
 import * as _ from 'lodash';
 import {validate} from 'class-validator';
 import {plainToClass} from 'class-transformer';
+import {ResultResponseConstant} from '../constants/result-response.constant';
 
 @Injectable()
 export class BodyParamValidationPipe implements PipeTransform {
@@ -12,13 +13,13 @@ export class BodyParamValidationPipe implements PipeTransform {
         }
         // is empty value
         if (this.isEmptyValue(value) || this.isEmptyObjectValue(value)) {
-            throw new BadRequestException('데이터가 비어있습니다.');
+            throw new BadRequestException(ResultResponseConstant.Message.EMPTY_PARAMS_ERROR, ResultResponseConstant.Error.EMPTY_PARAMS_ERROR);
         }
         // validation
         const errors = await validate(plainToClass(metatype, value));
         if (this.isInvalid(errors)) {
             console.log(errors)
-            throw new BadRequestException('데이터를 확인해주세요.');
+            throw new BadRequestException(ResultResponseConstant.Message.INVALID_PARAMS_ERROR, ResultResponseConstant.Error.INVALID_PARAMS_ERROR);
         }
         return value;
     }
@@ -38,16 +39,5 @@ export class BodyParamValidationPipe implements PipeTransform {
     private toTypeValidate(metaType): boolean {
         const types = [String, Boolean, Number, Array, Object];
         return !types.includes(metaType);
-    }
-
-    private buildError(errors) {
-        const result = {};
-        errors.forEach(el => {
-            let prop = el.property;
-            Object.entries(el.constraints).forEach(constraint => {
-                result[prop + constraint[0]] = `${constraint[1]}`;
-            });
-        });
-        return result;
     }
 }

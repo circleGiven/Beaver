@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate} from 'typeorm';
 import * as crypto from 'crypto';
 import {UserConstant} from './user.constant';
 
@@ -23,8 +23,16 @@ export class UserEntity {
     @Column({type: 'datetime', default: () => 'CURRENT_TIMESTAMP'})
     createdTime: Date;
 
+    @Column({type: 'datetime', default: () => 'CURRENT_TIMESTAMP'})
+    modifiedTime: Date;
+
     @BeforeInsert()
     hashPassword() {
         this.password = crypto.createHmac(UserConstant.PasswordAlgorithm.SHA256, this.password).digest('hex');
+    }
+
+    @BeforeUpdate()
+    updateTimestamp() {
+        this.modifiedTime = new Date;
     }
 }
