@@ -1,7 +1,10 @@
-import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate} from 'typeorm';
+import * as crypto from 'crypto';
+import {UserConstant} from './user.constant';
 
 @Entity('user')
 export class UserEntity {
+
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
@@ -11,9 +14,25 @@ export class UserEntity {
     @Column({length: 50})
     email: string;
 
-    @Column({length: 50})
+    @Column()
     password: string;
 
-    @Column({length: 50})
-    confirmPassword: string;
+    @Column({default: ''})
+    image: string;
+
+    @Column({type: 'datetime', default: () => 'CURRENT_TIMESTAMP'})
+    createdTime: Date;
+
+    @Column({type: 'datetime', default: () => 'CURRENT_TIMESTAMP'})
+    modifiedTime: Date;
+
+    @BeforeInsert()
+    hashPassword() {
+        this.password = crypto.createHmac(UserConstant.PasswordAlgorithm.SHA256, this.password).digest('hex');
+    }
+
+    @BeforeUpdate()
+    updateTimestamp() {
+        this.modifiedTime = new Date;
+    }
 }
