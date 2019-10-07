@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {UserEntity} from "./user/user.entity";
 import {UserModule} from './user/user.module';
-// import * as db from './config/db';
 
 @Module({
   imports: [
@@ -14,7 +12,7 @@ import {UserModule} from './user/user.module';
           password: 'root',
           database: 'beaver',
           synchronize: true,
-          entities: [UserEntity],
+          entities: [__dirname + '/**/*.entity{.ts,.js}'],
       }),
       UserModule,
   ],
@@ -24,5 +22,4 @@ import {UserModule} from './user/user.module';
   ],
 })
 export class AppModule {
-    // constructor(private readonly connection: Connection) {}
 }

@@ -1,8 +1,10 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put, UsePipes} from '@nestjs/common';
 import {UserService} from './user.service';
 import {UserEntity} from './user.entity';
 import {ApiUseTags, ApiBearerAuth} from '@nestjs/swagger';
 import {CreateUserDto} from './dto/create-user.dto';
+import {LoginUserDto, UpdateUserDto} from './dto';
+import {BodyParamValidationPipe} from '../common/pipes/body-param-validation.pipe';
 
 @ApiBearerAuth()
 @ApiUseTags('user')
@@ -17,7 +19,31 @@ export class UserController {
     }
 
     @Post()
+    @UsePipes(BodyParamValidationPipe)
     async create(@Body() userData: CreateUserDto) {
         return await this.userService.create(userData);
+    }
+
+    @Post('login')
+    @UsePipes(BodyParamValidationPipe)
+    async login(@Body() loginUserDto: LoginUserDto) {
+        return this.userService.login(loginUserDto);
+    }
+
+    @Get(':id')
+    @UsePipes(ParseUUIDPipe)
+    async detail(@Param('id') id: string) {
+        return this.userService.detail(id);
+    }
+
+    @Put(':id')
+    async update(@Param('id', new ParseUUIDPipe()) id: string, @Body(new BodyParamValidationPipe()) updateUserDto: UpdateUserDto) {
+        return await this.userService.update(id, updateUserDto);
+    }
+
+    @Delete(':id')
+    @UsePipes(ParseUUIDPipe)
+    async delete(@Param('id') id: string) {
+        return await this.userService.delete(id);
     }
 }
