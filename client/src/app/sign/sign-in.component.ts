@@ -1,29 +1,40 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from './user.service';
 
 @Component({
   templateUrl: 'sign-in.component.html'
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
 
-  form: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
-  });
+  form: FormGroup;
+  submitted: boolean;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService) {
+  }
 
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
   }
 
   loginHandler() {
-    console.log(this.isInvalidUserName());
+    this.submitted = true;
+    if (this.form.dirty && this.form.valid) {
+      this.userService.login(this.form.value).subscribe((value => {
+        alert('success');
+      }));
+    }
   }
 
-  isInvalidUserName() {
-    return this.form.controls.email.touched && this.form.controls.email.hasError('email');
+  get email() {
+    return this.form.get('email');
   }
 
-  isInvalidPassword() {
-
+  get password() {
+    return this.form.get('password');
   }
 }

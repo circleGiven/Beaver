@@ -10,21 +10,24 @@
         </div>
       </div>
       <div class="col-lg-7">
-        <h5 class="tx-gray-800 mg-b-25">Signin to Your Account</h5>
+        <h5 class="tx-gray-800 mg-b-25">Login to Your Account</h5>
         <form [formGroup]="form" (ngSubmit)="loginHandler()">
           <div class="input-group">
             <span class="input-group-addon"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
-            <input type="text" class="form-control parsley-error" placeholder="Username" formControlName="email">
+            <input type="text" class="form-control" [class.parsley-error]="submitted && email.invalid" placeholder="email" formControlName="email">
           </div>
-          <ul class="parsley-errors-list filled"><li class="parsley-required">This username is required.</li></ul>
+          <ul class="parsley-errors-list filled" *ngIf="submitted && email.invalid">
+            <li class="parsley-required"  *ngIf="email.hasError('required')">이메일을 입력해주세요.</li>
+            <li class="parsley-required" *ngIf="email.hasError('email')">이메일 형식이 아닙니다.</li>
+          </ul>
           <div style="padding: 10px"></div>
           <div class="input-group">
             <span class="input-group-addon"><i class="icon ion-key tx-16 lh-1 op-6" style="width: 12px"></i></span>
-            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            <input type="password" class="form-control" [class.parsley-error]="submitted && password.invalid" placeholder="Password" formControlName="password">
           </div>
-          <ul class="parsley-errors-list filled"><li class="parsley-required">This password is required.</li></ul>
+          <ul class="parsley-errors-list filled" *ngIf="submitted && password.invalid"><li class="parsley-required">패스워드를 입력해주세요.</li></ul>
           <div style="padding: 10px"></div>
-          <button class="btn btn-block">Sign In</button>
+          <button class="btn btn-block">Login</button>
         </form>
       </div><!-- col-7 -->
     </div><!-- row -->
