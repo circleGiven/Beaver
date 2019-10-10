@@ -17,8 +17,8 @@
             <input type="email" name="email" class="form-control" [class.parsley-error]="(isSubmitted || email.dirty) && email.invalid" placeholder="email" formControlName="email">
             <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || email.dirty) && email.invalid">
               <li class="parsley-required" *ngIf="email.errors.required">이메일을 입력해주세요.</li>
-              <li class="parsley-required" *ngIf="email.errors.email">이메일 형식이 아닙니다.</li>
-              <li class="parsley-required" *ngIf="email.errors.duplicated">해당 이메일은 허용되지 않습니다.</li>
+              <li class="parsley-required" *ngIf="email.errors.pattern">이메일 형식이 아닙니다.</li>
+              <li class="parsley-required" *ngIf="email.errors.duplicated">해당 이메일은 사용중입니다.</li>
             </ul>
           </div><!-- form-group -->
 
