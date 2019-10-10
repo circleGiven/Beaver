@@ -1,18 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
-import {UserService} from './user.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../service/user.service';
 import {duplicatedUserValidator, mustMatch} from '../validator/user.validator';
+import {Router} from '@angular/router';
 
 @Component({
-  templateUrl: 'sign-up.component.html'
+  templateUrl: 'register-user.component.html'
 })
-export class SignUpComponent implements OnInit {
+export class RegisterUserComponent implements OnInit {
 
   form: FormGroup;
   isSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,10 +31,11 @@ export class SignUpComponent implements OnInit {
   registerUser(): void {
     this.isSubmitted = true;
     if (this.form.valid) {
-      this.userService.create(this.form.value).subscribe((value => {
-        alert('success');
+      this.userService.create(this.form.value).subscribe(
+        data => {
         // route to login page
-      }));
+        this.router.navigateByUrl('/sign/login').then();
+      }, error => alert(error));
     }
   }
 

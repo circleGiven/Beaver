@@ -1,4 +1,4 @@
-import {UserService} from '../sign/user.service';
+import {UserService} from '../service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {timer} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';

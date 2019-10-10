@@ -1,17 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from './user.service';
+import {UserService} from '../service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
-  templateUrl: 'sign-in.component.html'
+  templateUrl: 'login.component.html'
 })
-export class SignInComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   form: FormGroup;
   isSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,7 +27,8 @@ export class SignInComponent implements OnInit {
     this.isSubmitted = true;
     if (this.form.dirty && this.form.valid) {
       this.userService.login(this.form.value).subscribe((value => {
-        alert('success');
+        // route to main page
+        this.router.navigateByUrl('/').then();
       }));
     }
   }
