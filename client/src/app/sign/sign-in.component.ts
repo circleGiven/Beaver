@@ -8,7 +8,7 @@ import {UserService} from './user.service';
 export class SignInComponent implements OnInit {
 
   form: FormGroup;
-  submitted: boolean;
+  isSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService) {
@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
   }
 
   loginHandler(): void {
-    this.submitted = true;
+    this.isSubmitted = true;
     if (this.form.dirty && this.form.valid) {
       this.userService.login(this.form.value).subscribe((value => {
         alert('success');

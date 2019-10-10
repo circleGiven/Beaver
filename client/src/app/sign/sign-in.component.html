@@ -15,18 +15,18 @@
         <form [formGroup]="form" (ngSubmit)="loginHandler()">
           <div class="input-group">
             <span class="input-group-addon"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
-            <input type="email" class="form-control" [class.parsley-error]="submitted && email.invalid" placeholder="email" formControlName="email">
+            <input type="email" class="form-control" [class.parsley-error]="(isSubmitted || email.dirty) && email.invalid" placeholder="email" formControlName="email">
           </div>
-          <ul class="parsley-errors-list filled" *ngIf="submitted && email.invalid">
-            <li class="parsley-required"  *ngIf="email.hasError('required')">이메일을 입력해주세요.</li>
-            <li class="parsley-required" *ngIf="email.hasError('email')">이메일 형식이 아닙니다.</li>
+          <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || email.dirty) && email.invalid">
+            <li class="parsley-required"  *ngIf="email.errors.required">이메일을 입력해주세요.</li>
+            <li class="parsley-required" *ngIf="email.errors.email">이메일 형식이 아닙니다.</li>
           </ul>
           <div style="padding: 10px"></div>
           <div class="input-group">
             <span class="input-group-addon"><i class="icon ion-key tx-16 lh-1 op-6" style="width: 12px"></i></span>
-            <input type="password" class="form-control" [class.parsley-error]="submitted && password.invalid" placeholder="Password" formControlName="password">
+            <input type="password" class="form-control" [class.parsley-error]="(isSubmitted || password.dirty) && password.invalid" placeholder="Password" formControlName="password">
           </div>
-          <ul class="parsley-errors-list filled" *ngIf="submitted && password.invalid"><li class="parsley-required">패스워드를 입력해주세요.</li></ul>
+          <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || password.dirty) &&  password.invalid"><li class="parsley-required">패스워드를 입력해주세요.</li></ul>
           <div style="padding: 10px"></div>
           <button type="submit" class="btn btn-block">Login</button>
         </form>

@@ -14,8 +14,8 @@
         <form [formGroup]="form" (ngSubmit)="registerUser()">
           <div class="form-group">
             <label class="form-control-label">Email:</label>
-            <input type="email" name="email" class="form-control" [class.parsley-error]="email.invalid" placeholder="email" formControlName="email">
-            <ul class="parsley-errors-list filled" *ngIf="email.invalid">
+            <input type="email" name="email" class="form-control" [class.parsley-error]="(isSubmitted || email.dirty) && email.invalid" placeholder="email" formControlName="email">
+            <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || email.dirty) && email.invalid">
               <li class="parsley-required" *ngIf="email.errors.required">이메일을 입력해주세요.</li>
               <li class="parsley-required" *ngIf="email.errors.email">이메일 형식이 아닙니다.</li>
               <li class="parsley-required" *ngIf="email.errors.duplicated">해당 이메일은 허용되지 않습니다.</li>
@@ -26,8 +26,8 @@
             <div class="col">
               <div class="form-group">
                 <label class="form-control-label">Name:</label>
-                <input type="text" name="name" class="form-control" [class.parsley-error]="name.invalid" placeholder="name" formControlName="name">
-                <ul class="parsley-errors-list filled" *ngIf="name.invalid"><li class="parsley-required">이름을 입력해주세요.</li></ul>
+                <input type="text" name="name" class="form-control" [class.parsley-error]="(isSubmitted || name.dirty) && name.invalid" placeholder="name" formControlName="name">
+                <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || name.dirty) && name.invalid"><li class="parsley-required">이름을 입력해주세요.</li></ul>
               </div><!-- form-group -->
             </div><!-- col -->
           </div><!-- row -->
@@ -36,8 +36,8 @@
             <div class="col">
               <div class="form-group">
                 <label class="form-control-label">Password:</label>
-                <input type="password" name="password" class="form-control" [class.parsley-error]="password.invalid" placeholder="password" formControlName="password">
-                <ul class="parsley-errors-list filled" *ngIf="password.invalid">
+                <input type="password" name="password" class="form-control" [class.parsley-error]="(isSubmitted || password.dirty) && password.invalid" placeholder="password" formControlName="password">
+                <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || password.dirty) && password.invalid">
                   <li class="parsley-required" *ngIf="password.errors.required">패스워드를 입력해주세요.</li>
                   <li class="parsley-required" *ngIf="password.errors.minlength">패스워드는 최소 6자리 입니다.</li>
                 </ul>
@@ -46,8 +46,8 @@
             <div class="col">
               <div class="form-group">
                 <label class="form-control-label">Confirm Password:</label>
-                <input type="password" name="confirmPassword" class="form-control" [class.parsley-error]="confirmPassword.invalid" placeholder="password" formControlName="confirmPassword">
-                <ul class="parsley-errors-list filled" *ngIf="confirmPassword.invalid">
+                <input type="password" name="confirmPassword" class="form-control" [class.parsley-error]="(isSubmitted || confirmPassword.dirty) && confirmPassword.invalid" placeholder="password" formControlName="confirmPassword">
+                <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || confirmPassword.dirty) && confirmPassword.invalid">
                   <li class="parsley-required" *ngIf="confirmPassword.errors.required">패스워드를 입력해주세요.</li>
                   <li class="parsley-required" *ngIf="confirmPassword.errors.mustMatch">패스워드와 동일하게 입력하세요.</li>
                 </ul>

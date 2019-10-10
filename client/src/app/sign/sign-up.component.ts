@@ -8,35 +8,26 @@ import {duplicatedUserValidator, mustMatch} from '../validator/user.validator';
 })
 export class SignUpComponent implements OnInit {
 
-  form: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email], [duplicatedUserValidator(this.userService)]],
-    name: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', Validators.required],
-  }, {
-    validators: [
-      mustMatch('password', 'confirmPassword'),
-    ]
-  });;
+  form: FormGroup;
+  isSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService) {
   }
 
   ngOnInit(): void {
-    // this.form = this.formBuilder.group({
-    //   email: ['', [Validators.required, Validators.email], [duplicatedUserValidator(this.userService)]],
-    //   name: ['', Validators.required],
-    //   password: ['', [Validators.required, Validators.minLength(6)]],
-    //   confirmPassword: ['', Validators.required],
-    // }, {
-    //   validators: [
-    //     MustMatch('password', 'confirmPassword'),
-    //   ]
-    // });
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email], [duplicatedUserValidator(this.userService)]],
+      name: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+    }, {
+      validators: [mustMatch('password', 'confirmPassword')]
+    });
   }
 
   registerUser(): void {
+    this.isSubmitted = true;
     if (this.form.valid) {
       this.userService.create(this.form.value).subscribe((value => {
         alert('success');
