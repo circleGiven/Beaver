@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   templateUrl: 'login.component.html'
@@ -13,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
+              private toastr: ToastrService,
+              private spinner: NgxSpinnerService,
               private router: Router) {
   }
 
@@ -25,11 +29,23 @@ export class LoginComponent implements OnInit {
 
   loginHandler(): void {
     this.isSubmitted = true;
-    if (this.form.dirty && this.form.valid) {
-      this.userService.login(this.form.value).subscribe((value => {
-        // route to main page
-        this.router.navigateByUrl('/').then();
-      }));
+    if (this.form.valid) {
+      // loading show
+      this.spinner.show();
+      this.userService.login(this.form.value).subscribe((value) => {
+        setTimeout(() => {
+          // loading hide
+          this.spinner.hide();
+          // route to main page
+          this.router.navigateByUrl('/').then();
+        }, 1000);
+      }, (error) => {
+        setTimeout(() => {
+          // loading hide
+          this.spinner.hide();
+          this.toastr.error(error.error.message);
+        } , 1000);
+      });
     }
   }
 

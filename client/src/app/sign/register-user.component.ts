@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../service/user.service';
 import {duplicatedUserValidator, mustMatch} from '../validator/user.validator';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   templateUrl: 'register-user.component.html'
@@ -14,6 +16,8 @@ export class RegisterUserComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
+              private toastr: ToastrService,
+              private spinner: NgxSpinnerService,
               private router: Router) {
   }
 
@@ -31,11 +35,24 @@ export class RegisterUserComponent implements OnInit {
   registerUser(): void {
     this.isSubmitted = true;
     if (this.form.valid) {
+      // loading show
+      this.spinner.show();
       this.userService.create(this.form.value).subscribe(
-        data => {
-        // route to login page
-        this.router.navigateByUrl('/sign/login').then();
-      }, error => alert(error));
+        (data) => {
+          setTimeout(() => {
+            // loading hide
+            this.spinner.hide();
+            this.toastr.success('회원가입에 성공하였습니다.');
+            // route to login page
+            this.router.navigateByUrl('/sign/login').then();
+            }, 1000);
+          }, (error) => {
+          setTimeout(() => {
+            // loading hide
+            this.spinner.hide();
+            this.toastr.error(error.error.message);
+          } , 1000);
+        });
     }
   }
 

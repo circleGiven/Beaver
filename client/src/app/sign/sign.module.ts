@@ -18,6 +18,7 @@ import {RegisterUserComponent} from './register-user.component';
     LoginComponent,
     RegisterUserComponent,
     PasswordResetComponent
-  ]
+  ],
+  providers: []
 })
 export class SignModule {}

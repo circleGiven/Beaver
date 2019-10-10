@@ -5,17 +5,26 @@ import { AppComponent } from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     CommonModule,
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      preventDuplicates: true,
+    }),
+    NgxSpinnerModule,
     AppRoutingModule,
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

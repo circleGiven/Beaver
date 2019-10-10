@@ -18,7 +18,6 @@ export class BodyParamValidationPipe implements PipeTransform {
         // validation
         const errors = await validate(plainToClass(metatype, value));
         if (this.isInvalid(errors)) {
-            console.log(errors)
             throw new BadRequestException(ResultResponseConstant.Message.INVALID_PARAMS_ERROR, ResultResponseConstant.Error.INVALID_PARAMS_ERROR);
         }
         return value;
