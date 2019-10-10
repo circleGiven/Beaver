@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  loginHandler() {
+  loginHandler(): void {
     this.submitted = true;
     if (this.form.dirty && this.form.valid) {
       this.userService.login(this.form.value).subscribe((value => {

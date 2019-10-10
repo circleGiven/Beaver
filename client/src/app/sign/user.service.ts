@@ -21,4 +21,7 @@ export class UserService {
     return this.httpClient.post(this.URL_USER, params);
   }
 
+  isDuplicatedEmail(email: string) {
+    return this.httpClient.get(this.URL_USER + `/duplicated?email=${email}`);
+  }
 }

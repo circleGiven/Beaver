@@ -15,7 +15,7 @@
         <form [formGroup]="form" (ngSubmit)="loginHandler()">
           <div class="input-group">
             <span class="input-group-addon"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
-            <input type="text" class="form-control" [class.parsley-error]="submitted && email.invalid" placeholder="email" formControlName="email">
+            <input type="email" class="form-control" [class.parsley-error]="submitted && email.invalid" placeholder="email" formControlName="email">
           </div>
           <ul class="parsley-errors-list filled" *ngIf="submitted && email.invalid">
             <li class="parsley-required"  *ngIf="email.hasError('required')">이메일을 입력해주세요.</li>
@@ -28,7 +28,7 @@
           </div>
           <ul class="parsley-errors-list filled" *ngIf="submitted && password.invalid"><li class="parsley-required">패스워드를 입력해주세요.</li></ul>
           <div style="padding: 10px"></div>
-          <button class="btn btn-block">Login</button>
+          <button type="submit" class="btn btn-block">Login</button>
         </form>
       </div><!-- col-7 -->
     </div><!-- row -->
