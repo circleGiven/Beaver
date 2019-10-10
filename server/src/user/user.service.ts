@@ -27,6 +27,11 @@ export class UserService {
         return await this.userRepository.findOne({email: email});
     }
 
+    async isDuplicated(email: string): Promise<ResultResponse> {
+        const user: UserEntity = await this.findByEmail(email);
+        return new ResultResponse({duplicated: this.isEmptyUser(user) === false}, HttpStatus.OK);
+    }
+
     async detail(id: string) {
         const user: UserEntity = await this.findById(id);
         // if not find user

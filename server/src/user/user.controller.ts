@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put, UsePipes} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put, Query, UsePipes} from '@nestjs/common';
 import {UserService} from './user.service';
 import {UserEntity} from './user.entity';
 import {ApiUseTags, ApiBearerAuth} from '@nestjs/swagger';
@@ -28,6 +28,11 @@ export class UserController {
     @UsePipes(BodyParamValidationPipe)
     async login(@Body() loginUserDto: LoginUserDto) {
         return this.userService.login(loginUserDto);
+    }
+
+    @Get('/duplicated')
+    async duplicatedUser(@Query('email') email: string) {
+        return this.userService.isDuplicated(email);
     }
 
     @Get(':id')
