@@ -19,12 +19,20 @@ export class UserService {
         return await this.userRepository.find();
     }
 
+    async findOne(options): Promise<UserEntity> {
+        return await this.userRepository.findOne(options);
+    }
+
     async findById(id: string): Promise<UserEntity> {
         return await this.userRepository.findOne({id: id});
     }
 
     async findByEmail(email: string): Promise<UserEntity> {
         return await this.userRepository.findOne({email: email});
+    }
+
+    async save(user: UserEntity): Promise<UserEntity> {
+        return await this.userRepository.save(user);
     }
 
     async isDuplicated(email: string): Promise<ResultResponse> {
@@ -39,20 +47,6 @@ export class UserService {
             throw new HttpException(UserConstant.ResultMessage.NOT_FOUND_USER, HttpStatus.BAD_REQUEST);
         }
         return user;
-    }
-
-    async login(loginUserDto: LoginUserDto) {
-        const options = {
-            email: loginUserDto.email,
-            password: crypto.createHmac(UserConstant.PasswordAlgorithm.SHA256, loginUserDto.password).digest('hex'),
-        };
-        const user: UserEntity = await this.userRepository.findOne(options);
-        // if not find user
-        if (this.isEmptyUser(user)) {
-            throw new HttpException(UserConstant.ResultMessage.FAIL_LOGIN, HttpStatus.BAD_REQUEST);
-        }
-        // TODO generate token
-        return this.buildUserRO(user, HttpStatus.OK, UserConstant.ResultMessage.SUCCESS_LOGIN);
     }
 
     async create(dto: CreateUserDto) {
@@ -103,7 +97,7 @@ export class UserService {
         return new ResultResponse(result, status, message);
     }
 
-    private isEmptyUser(user): boolean {
+    private isEmptyUser(user: UserEntity): boolean {
         return _.isNil(user);
     }
 }
