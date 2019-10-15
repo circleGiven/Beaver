@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../service/user.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {PatternConstant} from '../validator/pattern.constant';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   templateUrl: 'login.component.html'
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   isSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
+              private readonly authService: AuthService,
               private toastr: ToastrService,
               private spinner: NgxSpinnerService,
               private router: Router) {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       // loading show
       this.spinner.show();
-      this.userService.login(this.form.value).subscribe((value) => {
+      this.authService.login(this.form.value).subscribe((value) => {
         setTimeout(() => {
           // loading hide
           this.spinner.hide();
@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           // loading hide
           this.spinner.hide();
+          // TODO test
+          this.authService.removeToken();
           this.toastr.error(error.error.message);
         } , 1000);
       });

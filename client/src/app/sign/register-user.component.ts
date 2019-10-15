@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {PatternConstant} from '../validator/pattern.constant';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   templateUrl: 'register-user.component.html'
@@ -16,7 +17,8 @@ export class RegisterUserComponent implements OnInit {
   isSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
+              private readonly userService: UserService,
+              private readonly authService: AuthService,
               private toastr: ToastrService,
               private spinner: NgxSpinnerService,
               private router: Router) {
@@ -38,7 +40,7 @@ export class RegisterUserComponent implements OnInit {
     if (this.form.valid) {
       // loading show
       this.spinner.show();
-      this.userService.create(this.form.value).subscribe(
+      this.authService.register(this.form.value).subscribe(
         (data) => {
           setTimeout(() => {
             // loading hide
