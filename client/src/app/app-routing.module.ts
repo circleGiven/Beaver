@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
-  // 토큰이 유효할 경우 main 화면으로 이동
-  {path: '', loadChildren: './layout/layout.module#LayoutModule'},
+  {path: '', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard]},
   {path: 'sign', loadChildren: './sign/sign.module#SignModule'},
   {path: '**', redirectTo: ''},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
