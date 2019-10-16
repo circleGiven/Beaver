@@ -9,6 +9,7 @@ import {AuthInterceptor} from '../interceptors/auth.interceptor';
 import {MarkdownModule} from 'ngx-markdown';
 import {LayoutGnbComponent} from '../component/layout-gnb.component';
 import {FooterComponent} from '../footer/footer.component';
+import {UserListComponent} from '../user/user-list.component';
 
 
 @NgModule({
@@ -18,11 +19,12 @@ import {FooterComponent} from '../footer/footer.component';
     MarkdownModule.forRoot(),
   ],
   declarations: [
-    LayoutComponent,
     GnbComponent,
     LnbComponent,
+    FooterComponent,
+    LayoutComponent,
+    UserListComponent,
     LayoutGnbComponent,
-    FooterComponent
   ],
   providers: []
 })
