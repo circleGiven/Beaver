@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map, tap} from 'rxjs/operators';
 import {ValidateUtil} from '../utils/validate.util';
+import {ResponseInterface} from '../interfaces/response.interface';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -26,10 +27,10 @@ export class AuthService {
 
   login(params) {
     return this.httpClient.post(this.URL_AUTH + '/login', params).pipe(
-      tap(data => {
-        if (data && data['result']) {
+      tap((data: ResponseInterface) => {
+        if (ValidateUtil.isNotEmptyValue(data) && data.result) {
           // set token
-          this.setToken(data['result']);
+          this.setToken(data.result);
         }
       }));
   }

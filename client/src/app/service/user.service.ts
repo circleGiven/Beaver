@@ -9,6 +9,10 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
+  list() {
+    return this.httpClient.get(this.URL_USER);
+  }
+
   create(params) {
     return this.httpClient.post(this.URL_USER, params);
   }

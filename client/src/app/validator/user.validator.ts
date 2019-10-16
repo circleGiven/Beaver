@@ -2,13 +2,14 @@ import {UserService} from '../service/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {timer} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
+import {ResponseInterface} from '../interfaces/response.interface';
 
 export const duplicatedUserValidator = (userService: UserService) => {
   return (control: FormControl) => {
     return timer(500).pipe(
       switchMap(() => userService.isDuplicatedEmail(control.value)),
-      map(res => {
-        const isDuplicated: boolean = res['result'].duplicated;
+      map((res: ResponseInterface) => {
+        const isDuplicated: boolean = res.result.duplicated;
         return isDuplicated ? {duplicated: true} : null;
       })
     );
