@@ -35,4 +35,9 @@ export class UserEntity {
     updateTimestamp() {
         this.modifiedTime = new Date;
     }
+
+    comparePassword(password: string) {
+        const pw = crypto.createHmac(UserConstant.PasswordAlgorithm.SHA256, password).digest('hex');
+        return this.password === pw;
+    }
 }

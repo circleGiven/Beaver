@@ -1,0 +1,37 @@
+<div class="am-signin-wrapper">
+  <div class="am-signin-box">
+    <div class="row no-gutters">
+      <div class="col-lg-5">
+        <div>
+          <img src="../../assets/img/beaver.png" class="wd-70">
+          <h2>Beaver</h2>
+          <hr>
+          <p>Don't have an account? <br> <a [routerLink]="'/sign/register'">Sign up Now</a></p>
+<!--          <p>Forgot password?<br> <a [routerLink]="'/sign/reset'">Reset password</a></p>-->
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <h5 class="tx-gray-800 mg-b-25">Login to Your Account</h5>
+        <form [formGroup]="form" (ngSubmit)="loginHandler()">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon ion-person tx-16 lh-0 op-6"></i></span>
+            <input type="email" class="form-control" [class.parsley-error]="(isSubmitted || email.dirty) && email.invalid" placeholder="email" formControlName="email">
+          </div>
+          <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || email.dirty) && email.invalid">
+            <li class="parsley-required"  *ngIf="email.errors.required">이메일을 입력해주세요.</li>
+            <li class="parsley-required" *ngIf="email.errors.pattern">이메일 형식이 아닙니다.</li>
+          </ul>
+          <div style="padding: 10px"></div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon ion-key tx-16 lh-1 op-6" style="width: 12px"></i></span>
+            <input type="password" class="form-control" [class.parsley-error]="(isSubmitted || password.dirty) && password.invalid" placeholder="Password" formControlName="password">
+          </div>
+          <ul class="parsley-errors-list filled" *ngIf="(isSubmitted || password.dirty) &&  password.invalid"><li class="parsley-required">패스워드를 입력해주세요.</li></ul>
+          <div style="padding: 10px"></div>
+          <button type="submit" class="btn btn-block">Login</button>
+        </form>
+      </div><!-- col-7 -->
+    </div><!-- row -->
+    <p class="tx-center tx-white-5 tx-12 mg-t-15">Copyright &copy; 2019. All Rights Reserved. by circlegiven</p>
+  </div><!-- signin-box -->
+</div>

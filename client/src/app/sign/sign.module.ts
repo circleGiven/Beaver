@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {SignRoutingModule} from './sign-routing.module';
-import {SignInComponent} from './sign-in.component';
-import {SignUpComponent} from './sign-up.component';
+import {LoginComponent} from './login.component';
 import {FormModule} from '../component/form.module';
 import {PasswordResetComponent} from './password-reset.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {RegisterUserComponent} from './register-user.component';
 
 @NgModule({
   imports: [
@@ -15,9 +15,10 @@ import {CommonModule} from "@angular/common";
     CommonModule
   ],
   declarations: [
-    SignInComponent,
-    SignUpComponent,
+    LoginComponent,
+    RegisterUserComponent,
     PasswordResetComponent
-  ]
+  ],
+  providers: []
 })
 export class SignModule {}

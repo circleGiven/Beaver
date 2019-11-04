@@ -9,6 +9,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   private lnbMenuStatusSubscription: Subscription;
 
+
   constructor(private renderer: Renderer2,
               private lnbService: LnbService) {
   }
