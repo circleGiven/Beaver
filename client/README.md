@@ -1,3 +1,0 @@
-# Beaver
-
-Angular project
