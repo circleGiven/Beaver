@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'component-auth-header',
+  templateUrl: './header.component.html'
 })
-export class AppComponent {
+export class HeaderComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -18,16 +19,15 @@ export class AppComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  spinnerType: string = 'square-spin';
-  spinnerSize: string = 'medium';
-  spinnerColor: string = '#fff';
-  spinnerMessage: string = 'Loading...';
+  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
+
+  isRegister: boolean;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -41,6 +41,10 @@ export class AppComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  goToMainPage(): void {
+    this.router.navigate(['/']);
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

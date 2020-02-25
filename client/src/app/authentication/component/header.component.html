@@ -1,0 +1,16 @@
+<div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
+  <div class="d-flex align-items-center container p-0">
+    <div class="page-logo width-mobile-auto m-0 align-items-center justify-content-center p-0 bg-transparent bg-img-none shadow-0 height-9">
+      <a href="javascript:" class="page-logo-link press-scale-down d-flex align-items-center" (click)="goToMainPage()">
+        <img [style.height.px]="40" [style.width.px]="40" [src]="LOGO_IMAGE_PATH">
+        <span class="page-logo-text mr-1">Beaver</span>
+      </a>
+    </div>
+    <span class="text-white opacity-50 ml-auto mr-2 hidden-xs-down">
+        이미 가입하셨나요?
+    </span>
+    <a href="javascript:" class="btn-link text-white ml-auto ml-sm-0">
+      {{isRegister ? '로그인' : '회원가입'}}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+  <div class="row">
+    <div class="col-xl-12">
+      <h2 class="fs-xxl fw-500 mt-4 text-white text-center">
+        회원가입
+        <small class="h3 fw-300 mt-3 mb-5 text-white opacity-60">
+          가입을 하면 Beaver에서 제공하는 모든 서비스를 원활하게 사용하실 수 있습니다
+        </small>
+      </h2>
+    </div>
+    <div class="col-xl-6 ml-auto mr-auto">
+      <div class="card p-4 rounded-plus bg-faded">
+        <form [formGroup]="form" (ngSubmit)="registerUser()">
+          <div class="form-group">
+            <label class="form-label">닉네임</label>
+            <input type="email" class="form-control" placeholder="Beaver에서 사용할 닉네임을 입력하세요" formControlName="name"
+                   [class.is-invalid]="(isSubmitted || name.dirty) && name.invalid">
+            <div class="invalid-feedback">닉네임을 입력하세요</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="이메일은 아이디 및 비밀번호 찾기에 사용됩니다" formControlName="email"
+                   [class.is-invalid]="(isSubmitted || email.dirty) && email.invalid">
+            <div class="invalid-feedback" *ngIf="email.errors.required">이메일을 입력해주세요</div>
+            <div class="invalid-feedback" *ngIf="email.errors.pattern">이메일 형식이 아닙니다</div>
+            <div class="invalid-feedback" *ngIf="email.errors.duplicated">해당 이메일은 사용중입니다</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">비밀번호</label>
+            <input type="password" class="form-control" placeholder="6-20 사이의 숫자, 문자, 특수문자를 입력하세요" formControlName="password"
+                   [class.is-invalid]="(isSubmitted || password.dirty) && password.invalid">
+            <div class="invalid-feedback" *ngIf="password.errors.required">패스워드를 입력해주세요</div>
+            <div class="invalid-feedback" *ngIf="password.errors.minlength">패스워드는 최소 6자리 입니다</div>
+            <div class="invalid-feedback" *ngIf="password.errors.maxlength">패스워드는 최 대20자리 입니다</div>
+<!--            <div class="help-block">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>-->
+          </div>
+          <div class="form-group">
+            <label class="form-label">비밀번호 확인</label>
+            <input type="password" class="form-control" placeholder="위와 동일한 비밀번호를 입력하세요" formControlName="confirmPassword"
+                   [class.is-invalid]="(isSubmitted || confirmPassword.dirty) && confirmPassword.invalid">
+            <div class="invalid-feedback" *ngIf="confirmPassword.errors.required">패스워드를 입력해주세요</div>
+            <div class="invalid-feedback" *ngIf="confirmPassword.errors.mustMatch">패스워드와 동일하게 입력하세요</div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-md-4 ml-auto text-right">
+              <button id="js-login-btn" type="submit" class="btn btn-block btn-danger btn-lg mt-3 waves-effect waves-themed">가입</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
