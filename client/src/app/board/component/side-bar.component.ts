@@ -1,10 +1,12 @@
-import {Component, ElementRef, HostBinding, OnInit} from '@angular/core';
+import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {SidebarService} from '../../services/sidebar.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'aside[component-sidebar]',
   templateUrl: './side-bar.component.html',
 })
-export class SideBarComponent implements OnInit {
+export class SideBarComponent implements OnInit, OnDestroy {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -12,6 +14,10 @@ export class SideBarComponent implements OnInit {
 
   @HostBinding('class.page-sidebar')
   private readonly class = true;
+
+  private isShowSidebar: boolean = true;
+
+  private sidebarVisible$: Subscription;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -21,11 +27,15 @@ export class SideBarComponent implements OnInit {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor(private readonly elementRef: ElementRef,
+              private readonly renderer: Renderer2,
+              private readonly sidebarService: SidebarService) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -33,7 +43,11 @@ export class SideBarComponent implements OnInit {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   ngOnInit(): void {
+    this.sidebarVisible$ = this.sidebarService.getSidebarVisible().subscribe(() => this.changeSidebarVisible());
+  }
 
+  ngOnDestroy(): void {
+    this.sidebarVisible$.unsubscribe();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -43,6 +57,16 @@ export class SideBarComponent implements OnInit {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  changeSidebarVisible(): void {
+    if (this.isShowSidebar === true) {
+      this.isShowSidebar = false;
+      this.renderer.addClass(document.body, 'nav-function-hidden');
+    } else {
+      this.isShowSidebar = true;
+      this.renderer.removeClass(document.body, 'nav-function-hidden');
+    }
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

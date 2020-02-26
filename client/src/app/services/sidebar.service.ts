@@ -1,19 +1,14 @@
-import {Component, HostBinding} from '@angular/core';
-import {Router} from '@angular/router';
-import {SidebarService} from '../../services/sidebar.service';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
 
-@Component({
-  selector: 'header[component-board-header]',
-  templateUrl: './header.component.html'
-})
-export class HeaderComponent {
+@Injectable({providedIn: 'root'})
+export class SidebarService {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @HostBinding('class.page-header')
-  private readonly class = true;
+  private readonly sidebarVisible$: Subject<boolean> = new Subject();
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -23,14 +18,11 @@ export class HeaderComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly router: Router,
-              private readonly sidebarService: SidebarService) {
+  constructor() {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -45,12 +37,12 @@ export class HeaderComponent {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  goToMainPage(): void {
-    this.router.navigate(['/']);
+  getSidebarVisible(): Observable<boolean> {
+    return this.sidebarVisible$.asObservable();
   }
 
   changeSidebarVisible(): void {
-    this.sidebarService.changeSidebarVisible();
+    this.sidebarVisible$.next();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
