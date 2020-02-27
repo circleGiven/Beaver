@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {SidebarService} from '../../services/sidebar.service';
 import {Subscription} from 'rxjs';
 
@@ -15,8 +15,6 @@ export class SideBarComponent implements OnInit, OnDestroy {
   @HostBinding('class.page-sidebar')
   private readonly class = true;
 
-  private isShowSidebar: boolean = true;
-
   private sidebarVisible$: Subscription;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -27,8 +25,12 @@ export class SideBarComponent implements OnInit, OnDestroy {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+
   readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
 
+  // TODO: 추후 API로 대체
+  menuList;
+  isShowSidebar: boolean = true;
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
@@ -43,6 +45,8 @@ export class SideBarComponent implements OnInit, OnDestroy {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   ngOnInit(): void {
+    this.setSideBarOption();
+    this.setMenuList();
     this.sidebarVisible$ = this.sidebarService.getSidebarVisible().subscribe(() => this.changeSidebarVisible());
   }
 
@@ -60,17 +64,45 @@ export class SideBarComponent implements OnInit, OnDestroy {
 
   changeSidebarVisible(): void {
     if (this.isShowSidebar === true) {
-      this.isShowSidebar = false;
-      this.renderer.addClass(document.body, 'nav-function-hidden');
+      this.hideSideBar();
     } else {
-      this.isShowSidebar = true;
-      this.renderer.removeClass(document.body, 'nav-function-hidden');
+      this.showSideBar();
+    }
+  }
+
+  showSideBar(): void {
+    this.isShowSidebar = true;
+    this.renderer.removeClass(document.body, 'nav-function-hidden');
+    this.renderer.addClass(document.body, 'mobile-nav-on');
+  }
+
+  hideSideBar(): void {
+    this.isShowSidebar = false;
+    this.renderer.addClass(document.body, 'nav-function-hidden');
+    this.renderer.removeClass(document.body, 'mobile-nav-on');
+  }
+
+  clickOutsideSideBar(): void {
+    if (this.isShowSidebar === true) {
+      this.hideSideBar();
     }
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  private setSideBarOption(): void {
+    // fix side bar
+    this.renderer.addClass(document.body, 'nav-function-fixed');
+  }
+
+  private setMenuList(): void {
+    this.menuList = [
+      {label: 'DB', value: 'DB'},
+      {label: '자유게시판', value: 'board'},
+    ];
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Inner Class

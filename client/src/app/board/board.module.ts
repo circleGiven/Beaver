@@ -7,6 +7,7 @@ import {HeaderComponent} from './component/header.component';
 import {SideBarComponent} from './component/side-bar.component';
 import {FooterComponent} from './component/footer.component';
 import {MainViewComponent} from './view/main-view.component';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    ClickOutsideModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
