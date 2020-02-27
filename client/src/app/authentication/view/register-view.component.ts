@@ -64,11 +64,12 @@ export class RegisterViewComponent implements OnInit {
 
   registerUser(): void {
     this.isSubmitted = true;
-    if (this.form.valid) {
+    if (this.form.valid === true) {
       // loading show
       this.spinner.show();
       this.userService.register(this.form.value).subscribe(
         (data) => {
+          //TODO TEST pending
           setTimeout(() => {
             // loading hide
             this.spinner.hide();

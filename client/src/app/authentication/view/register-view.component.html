@@ -21,25 +21,32 @@
             <label class="form-label">Email</label>
             <input type="email" class="form-control" placeholder="이메일은 아이디 및 비밀번호 찾기에 사용됩니다" formControlName="email"
                    [class.is-invalid]="(isSubmitted || email.dirty) && email.invalid">
-            <div class="invalid-feedback" *ngIf="email.errors.required">이메일을 입력해주세요</div>
-            <div class="invalid-feedback" *ngIf="email.errors.pattern">이메일 형식이 아닙니다</div>
-            <div class="invalid-feedback" *ngIf="email.errors.duplicated">해당 이메일은 사용중입니다</div>
+            <ng-container *ngIf="(isSubmitted || email.dirty) && email.invalid">
+              <div class="invalid-feedback" *ngIf="email.errors.required">이메일을 입력해주세요</div>
+              <div class="invalid-feedback" *ngIf="email.errors.pattern">이메일 형식이 아닙니다</div>
+              <div class="invalid-feedback" *ngIf="email.errors.duplicated">해당 이메일은 사용중입니다</div>
+            </ng-container>
+
           </div>
           <div class="form-group">
             <label class="form-label">비밀번호</label>
             <input type="password" class="form-control" placeholder="6-20 사이의 숫자, 문자, 특수문자를 입력하세요" formControlName="password"
                    [class.is-invalid]="(isSubmitted || password.dirty) && password.invalid">
-            <div class="invalid-feedback" *ngIf="password.errors.required">패스워드를 입력해주세요</div>
-            <div class="invalid-feedback" *ngIf="password.errors.minlength">패스워드는 최소 6자리 입니다</div>
-            <div class="invalid-feedback" *ngIf="password.errors.maxlength">패스워드는 최 대20자리 입니다</div>
+            <ng-container *ngIf="(isSubmitted || password.dirty) && password.invalid">
+              <div class="invalid-feedback" *ngIf="password.errors.required">패스워드를 입력해주세요</div>
+              <div class="invalid-feedback" *ngIf="password.errors.minlength">패스워드는 최소 6자리 입니다</div>
+              <div class="invalid-feedback" *ngIf="password.errors.maxlength">패스워드는 최 대20자리 입니다</div>
+            </ng-container>
 <!--            <div class="help-block">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>-->
           </div>
           <div class="form-group">
             <label class="form-label">비밀번호 확인</label>
             <input type="password" class="form-control" placeholder="위와 동일한 비밀번호를 입력하세요" formControlName="confirmPassword"
                    [class.is-invalid]="(isSubmitted || confirmPassword.dirty) && confirmPassword.invalid">
-            <div class="invalid-feedback" *ngIf="confirmPassword.errors.required">패스워드를 입력해주세요</div>
-            <div class="invalid-feedback" *ngIf="confirmPassword.errors.mustMatch">패스워드와 동일하게 입력하세요</div>
+            <ng-container *ngIf="(isSubmitted || confirmPassword.dirty) && confirmPassword.invalid">
+              <div class="invalid-feedback" *ngIf="confirmPassword.errors.required">패스워드를 입력해주세요</div>
+              <div class="invalid-feedback" *ngIf="confirmPassword.errors.mustMatch">패스워드와 동일하게 입력하세요</div>
+            </ng-container>
           </div>
           <div class="row no-gutters">
             <div class="col-md-4 ml-auto text-right">

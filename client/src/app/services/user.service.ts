@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {ResponseInterface} from '../interfaces/Response.interface';
+import {AjaxResponse} from '../interfaces/ajax-response';
 import {tap} from 'rxjs/operators';
 import {ValidateUtil} from '../utils/validate.util';
 
@@ -60,7 +60,7 @@ export class UserService {
 
   login(params) {
     return this.httpClient.post(this.URL_AUTH + '/login', params).pipe(
-      tap((data: ResponseInterface) => {
+      tap((data: AjaxResponse<any>) => {
         if (ValidateUtil.isNotEmptyValue(data) && data.result) {
           // set token
           this.setToken(data.result);

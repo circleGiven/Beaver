@@ -59,7 +59,7 @@ export class LoginViewComponent implements OnInit {
 
   login(): void {
     this.isSubmitted = true;
-    if (this.form.valid) {
+    if (this.form.valid  === true) {
       // loading show
       this.spinner.show();
       this.userService.login(this.form.value).subscribe((value) => {

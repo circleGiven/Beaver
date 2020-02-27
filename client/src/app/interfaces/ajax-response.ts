@@ -1,6 +1,6 @@
-export interface ResponseInterface {
+export interface AjaxResponse<T> {
   statusCode?: number;
   message?: string;
   error?: string;
-  result?;
+  result?: T;
 }
