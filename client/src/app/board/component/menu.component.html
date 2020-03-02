@@ -1,0 +1,12 @@
+<a href="javascript:" title="{{menu.label}}" class=" waves-effect waves-themed" (click)="goToPage(menu)">
+  <i class="fal fa-database"></i>
+  <span class="nav-link-text">{{menu.label}}</span>
+  <b class="collapse-sign" *ngIf="isExistSubMenuList(menu)"><em class="fal fa-angle-down"></em></b>
+</a>
+<ul>
+  <li *ngFor="let subMenu of menu.subMenuList">
+    <a href="javascript:" title="{{subMenu.label}}" class=" waves-effect waves-themed">
+      <span class="nav-link-text">{{subMenu.label}}</span>
+    </a>
+  </li>
+</ul>

@@ -3,10 +3,10 @@
 /* #BOOTSTRAP AND MIXINS - Base Unmodified Bootstrap file with theme mixins
 ========================================================================== */
 /*---------------------------------------------------
-    SASS ELements (based on LESS Elements 0.9 http://lesselements.com)
+    SASS ELements (based on LESS Elements 0.9 http://lesselements.com) 
   -------------------------------- -------------------
     LESS ELEMENTS made by Dmitry Fadeyev (http://fadeyev.net)
-    SASS port by Samuel Beek (http://samuelbeek.com)
+    SASS port by Samuel Beek (http://samuelbeek.com) 
   ---------------------------------------------------*/
 /*------------------------
     Usage
@@ -33,12 +33,12 @@ From this W3C document: http://www.webmasterworld.com/r.cgi?f=88&d=9769&url=http
 
 usage:
 @include text-contrast($bgcolor)
-
-Color brightness is determined by the following formula:
+      
+Color brightness is determined by the following formula: 
 ((Red value X 299) + (Green value X 587) + (Blue value X 114)) / 1000
 ------------------------*/
 /*------------------------
- color factory
+ color factory 
   eg: @include paint($blue-grey-50, bg-blue-grey-50);
 ------------------------*/
 /* backface visibility */
@@ -299,9 +299,9 @@ h6 small,
 
 /* text-gradient */
 .text-gradient {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #6e4e9e), color-stop(50%, #62468d), color-stop(75%, #0c7cd5), to(#0960a5));
-  background: linear-gradient(180deg, #6e4e9e 25%, #62468d 50%, #0c7cd5 75%, #0960a5 100%);
-  color: #886ab5;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #0c7ed5), color-stop(50%, #0a70bd), color-stop(75%, #9d0ad2), to(#7908a1));
+  background: linear-gradient(180deg, #0c7ed5 25%, #0a70bd 50%, #9d0ad2 75%, #7908a1 100%);
+  color: #2198F3;
   background-clip: text;
   text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -309,8 +309,8 @@ h6 small,
   text-shadow: none; }
 
 /* looking for font size? Check _helpers.scss */
-/* PLACEHOLDER
-=============================================
+/* PLACEHOLDER 
+============================================= 
 
 EXAMPLE:
 
@@ -372,13 +372,13 @@ RESULT:
 			left: 0;
 			top: 0;
 			border-radius: 50%;
-		}
+		} 
 	}*/
 /* patterns */
 /* Page Layout Starts below...
 ========================================================================== */
 html body {
-  background: #faf8fb;
+  background: #ebf6fd;
   /* NEW*/ }
   html body .blankpage-logo {
     padding: 20px 0 30px; }
@@ -403,7 +403,7 @@ html body {
   html body .blankpage-footer {
     padding: 10px 0;
     font-size: 0.75rem;
-    color: #73579d; }
+    color: #1282d8; }
   html body .login-footer {
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.6875rem; }
@@ -418,13 +418,13 @@ html body {
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
-    background: url("../img/backgrounds/clouds.png") no-repeat;
+    background: url("../img/clouds.png") no-repeat;
     background-size: cover;
     -webkit-transition: 1s opacity;
     transition: 1s opacity; }
   @media screen and (max-device-width: 800px) {
     html body html {
-      background: url("../img/backgrounds/clouds.png") #FFF no-repeat center center fixed; }
+      background: url("../img/clouds.png") #FFF no-repeat center center fixed; }
     html body #bgvid {
       display: none; } }
 

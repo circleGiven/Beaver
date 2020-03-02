@@ -329,72 +329,18 @@ div.dt-button-collection-title {
 div.dt-button-collection-title:empty {
   display: none; }
 
-div.dt-button-collection.dropdown-menu {
+div.dt-button-collection {
+  position: absolute;
+  z-index: 2001; }
+
+div.dt-button-collection div.dropdown-menu {
   display: block;
   z-index: 2002;
-  -webkit-column-gap: 8px;
-  -moz-column-gap: 8px;
-  -ms-column-gap: 8px;
-  -o-column-gap: 8px;
-  column-gap: 8px; }
+  min-width: 100%; }
 
-div.dt-button-collection.dropdown-menu.fixed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-left: -75px;
-  border-radius: 0; }
-
-div.dt-button-collection.dropdown-menu.fixed.two-column {
-  margin-left: -150px; }
-
-div.dt-button-collection.dropdown-menu.fixed.three-column {
-  margin-left: -225px; }
-
-div.dt-button-collection.dropdown-menu.fixed.four-column {
-  margin-left: -300px; }
-
-div.dt-button-collection.dropdown-menu > * {
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-       break-inside: avoid; }
-
-div.dt-button-collection.dropdown-menu.two-column {
-  width: 300px;
-  padding-bottom: 1px;
-  -webkit-column-count: 2;
-  -moz-column-count: 2;
-  -ms-column-count: 2;
-  -o-column-count: 2;
-  column-count: 2; }
-
-div.dt-button-collection.dropdown-menu.three-column {
-  width: 450px;
-  padding-bottom: 1px;
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  -ms-column-count: 3;
-  -o-column-count: 3;
-  column-count: 3; }
-
-div.dt-button-collection.dropdown-menu.four-column {
-  width: 600px;
-  padding-bottom: 1px;
-  -webkit-column-count: 4;
-  -moz-column-count: 4;
-  -ms-column-count: 4;
-  -o-column-count: 4;
-  column-count: 4; }
-
-div.dt-button-collection.dropdown-menu .dt-button {
-  border-radius: 0; }
-
-div.dt-button-collection {
-  -webkit-column-gap: 8px;
-  -moz-column-gap: 8px;
-  -ms-column-gap: 8px;
-  -o-column-gap: 8px;
-  column-gap: 8px; }
+div.dt-button-collection div.dt-button-collection-title {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
 
 div.dt-button-collection.fixed {
   position: fixed;
@@ -404,7 +350,7 @@ div.dt-button-collection.fixed {
   border-radius: 0; }
 
 div.dt-button-collection.fixed.two-column {
-  margin-left: -150px; }
+  margin-left: -200px; }
 
 div.dt-button-collection.fixed.three-column {
   margin-left: -225px; }
@@ -412,13 +358,23 @@ div.dt-button-collection.fixed.three-column {
 div.dt-button-collection.fixed.four-column {
   margin-left: -300px; }
 
-div.dt-button-collection > * {
+div.dt-button-collection > :last-child {
+  display: block !important;
+  -webkit-column-gap: 8px;
+  -moz-column-gap: 8px;
+  -ms-column-gap: 8px;
+  -o-column-gap: 8px;
+  column-gap: 8px; }
+
+div.dt-button-collection > :last-child > * {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
        break-inside: avoid; }
 
 div.dt-button-collection.two-column {
-  width: 300px;
+  width: 400px; }
+
+div.dt-button-collection.two-column > :last-child {
   padding-bottom: 1px;
   -webkit-column-count: 2;
   -moz-column-count: 2;
@@ -427,7 +383,9 @@ div.dt-button-collection.two-column {
   column-count: 2; }
 
 div.dt-button-collection.three-column {
-  width: 450px;
+  width: 450px; }
+
+div.dt-button-collection.three-column > :last-child {
   padding-bottom: 1px;
   -webkit-column-count: 3;
   -moz-column-count: 3;
@@ -436,7 +394,9 @@ div.dt-button-collection.three-column {
   column-count: 3; }
 
 div.dt-button-collection.four-column {
-  width: 600px;
+  width: 600px; }
+
+div.dt-button-collection.four-column > :last-child {
   padding-bottom: 1px;
   -webkit-column-count: 4;
   -moz-column-count: 4;
@@ -521,19 +481,31 @@ div.DTFC_RightHeadWrapper table {
 div.DTFC_LeftBodyWrapper table,
 div.DTFC_RightBodyWrapper table {
   border-top: none;
-  margin: 0 !important; }
+  margin: 0 !important;
+  z-index: 2; }
 
-div.DTFC_LeftBodyWrapper table thead .sorting:after,
+div.DTFC_LeftBodyWrapper table thead .sorting:before, div.DTFC_LeftBodyWrapper table thead .sorting:after,
+div.DTFC_LeftBodyWrapper table thead .sorting_asc:before,
 div.DTFC_LeftBodyWrapper table thead .sorting_asc:after,
+div.DTFC_LeftBodyWrapper table thead .sorting_desc:before,
 div.DTFC_LeftBodyWrapper table thead .sorting_desc:after,
+div.DTFC_LeftBodyWrapper table thead .sorting:before,
 div.DTFC_LeftBodyWrapper table thead .sorting:after,
+div.DTFC_LeftBodyWrapper table thead .sorting_asc:before,
 div.DTFC_LeftBodyWrapper table thead .sorting_asc:after,
+div.DTFC_LeftBodyWrapper table thead .sorting_desc:before,
 div.DTFC_LeftBodyWrapper table thead .sorting_desc:after,
+div.DTFC_RightBodyWrapper table thead .sorting:before,
 div.DTFC_RightBodyWrapper table thead .sorting:after,
+div.DTFC_RightBodyWrapper table thead .sorting_asc:before,
 div.DTFC_RightBodyWrapper table thead .sorting_asc:after,
+div.DTFC_RightBodyWrapper table thead .sorting_desc:before,
 div.DTFC_RightBodyWrapper table thead .sorting_desc:after,
+div.DTFC_RightBodyWrapper table thead .sorting:before,
 div.DTFC_RightBodyWrapper table thead .sorting:after,
+div.DTFC_RightBodyWrapper table thead .sorting_asc:before,
 div.DTFC_RightBodyWrapper table thead .sorting_asc:after,
+div.DTFC_RightBodyWrapper table thead .sorting_desc:before,
 div.DTFC_RightBodyWrapper table thead .sorting_desc:after {
   display: none; }
 
@@ -952,7 +924,7 @@ table.dataTable tbody td.selected a {
 /*  THEME COLORs
 ========================================================================== */
 /* Looks good on chrome default color profile */
-/* looks good in sRGB but washed up on chrome default 
+/* looks good in sRGB but washed up on chrome default
 $color-primary:						#826bb0;
 $color-success:						#31cb55;
 $color-info:						#5e93ec;
@@ -1055,7 +1027,7 @@ http://www.standardista.com/px-to-rem-conversion-if-root-font-size-is-16px/
 /*  Z-INDEX declearation
 ========================================================================== */
 /* we adjust bootstrap z-index to be higher than our higest z-index*/
-/*  CUSTOM ICON PREFIX 
+/*  CUSTOM ICON PREFIX
 ========================================================================== */
 /*  PRINT CSS (landscape or portrait)
 ========================================================================== */
@@ -1093,11 +1065,11 @@ aside.page-sidebar ($nav-width, $nav-background)
 		ul.nav-menu
 			li
 				a (parent level-0..., $nav-link-color, $nav-link-hover-color, $nav-link-hover-bg-color, $nav-link-hover-left-border-color)
-					icon 
+					icon
 					span
-					collapse-sign 
-					
-				ul.nav-menu-sub-one  
+					collapse-sign
+
+				ul.nav-menu-sub-one
 					li
 						a ($nav-level-1... $nav-sub-link-height)
 							span
@@ -1133,13 +1105,13 @@ aside.page-sidebar ($nav-width, $nav-background)
 /* List Table */
 /*   PAGE SETTINGS
 ========================================================================== */
-/*   PAGE BREADCRUMB 
+/*   PAGE BREADCRUMB
 ========================================================================== */
-/*   PAGE COMPONENT PANELS 
+/*   PAGE COMPONENT PANELS
 ========================================================================== */
-/*   PAGE COMPONENT PROGRESSBARS 
+/*   PAGE COMPONENT PROGRESSBARS
 ========================================================================== */
-/*   PAGE COMPONENT MESSENGER 
+/*   PAGE COMPONENT MESSENGER
 ========================================================================== */
 /*   FOOTER
 ========================================================================== */
@@ -1153,18 +1125,18 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 .sorting_asc,
 .sorting_desc,
 .even .sorting_1 {
-  background-color: rgba(136, 106, 181, 0.03); }
+  background-color: rgba(33, 152, 243, 0.03); }
 
 .odd .sorting_1 {
-  background-color: rgba(136, 106, 181, 0.04); }
+  background-color: rgba(33, 152, 243, 0.04); }
 
 .table-dark .sorting_asc,
 .table-dark .sorting_desc,
 .table-dark .even .sorting_1 {
-  background-color: rgba(255, 194, 65, 0.15); }
+  background-color: rgba(255, 154, 19, 0.15); }
 
 .table-dark .odd .sorting_1 {
-  background-color: rgba(255, 194, 65, 0.15); }
+  background-color: rgba(255, 154, 19, 0.15); }
 
 /* some idiot put "important" rule on the main css file now I have to put important here to override it... eghhh */
 /* I had to set it to 0 because auto fill cannot "compute" for the margin ... nice job Allan >.> */
@@ -1199,13 +1171,13 @@ table.dataTable.dtr-column > tbody > tr > th.control:before {
   border-radius: 0;
   border: 0;
   margin: 0;
-  background-color: #886ab5; }
+  background-color: #2198F3; }
 
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before,
 table.dataTable.dtr-column > tbody > tr.parent td.control:before,
 table.dataTable.dtr-column > tbody > tr.parent th.control:before {
-  background-color: #1dc9b7; }
+  background-color: #69FB13; }
 
 table.dataTable thead .sorting:before,
 table.dataTable thead .sorting_asc:before,
@@ -1228,7 +1200,7 @@ table.dataTable thead .sorting_desc_disabled:after {
   font-family: 'Font Awesome 5 Pro'; }
 
 .dataTables_empty {
-  color: #fd3995;
+  color: #FC1349;
   font-size: 2rem;
   padding-top: 2.5rem !important;
   padding-bottom: 2.5rem !important; }
@@ -1246,7 +1218,7 @@ table.dataTable thead .sorting_desc_disabled:after {
     .dataTables_wrapper tr.child td.child .dtr-details:before {
       content: "\f149";
       font-family: 'Font Awesome 5 Pro';
-      color: #21dfcb;
+      color: #79fb2c;
       width: 20px;
       height: 30px;
       position: absolute;
@@ -1260,7 +1232,7 @@ table.dataTable thead .sorting_desc_disabled:after {
       bottom: 0;
       left: 0;
       width: 1rem;
-      background: #4de5d5; }
+      background: #99fc5e; }
 
 @media screen and (max-width: 767px) {
   div.dataTables_wrapper div.dataTables_length,
@@ -1319,12 +1291,12 @@ div.dt-autofill-background {
   padding-right: 2rem !important; }
 
 div.dt-autofill-handle {
-  background: #886ab5;
+  background: #2198F3;
   height: 0.875rem;
   width: 0.875rem; }
 
 div.dt-autofill-select {
-  background-color: #886ab5; }
+  background-color: #2198F3; }
 
 /* FixedColumns */
 .DTFC_LeftHeadWrapper:before,
@@ -1336,7 +1308,7 @@ div.dt-autofill-select {
   top: 1px;
   bottom: 0px;
   width: 1px;
-  background: #fd3995;
+  background: #FC1349;
   z-index: 1;
   -webkit-box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.4);
           box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.4); }
@@ -1349,9 +1321,9 @@ div.dt-autofill-select {
 /* KeyTable */
 table.dataTable tbody th.focus,
 table.dataTable tbody td.focus {
-  -webkit-box-shadow: inset 0 0 0px 1px #886ab5;
-          box-shadow: inset 0 0 0px 1px #886ab5;
-  background: rgba(136, 106, 181, 0.1);
+  -webkit-box-shadow: inset 0 0 0px 1px #2198F3;
+          box-shadow: inset 0 0 0px 1px #2198F3;
+  background: rgba(33, 152, 243, 0.1);
   font-weight: 500; }
 
 /* RowGroup */
@@ -1376,11 +1348,11 @@ table.dataTable td.reorder {
   text-align: inherit; }
 
 tr.dt-rowReorder-moving {
-  outline: 2px solid #1dc9b7;
+  outline: 2px solid #69FB13;
   outline-offset: -2px; }
 
 table.dt-rowReorder-float {
-  outline: 2px solid #886ab5;
+  outline: 2px solid #2198F3;
   outline-offset: -2px; }
 
 /* w-100 bug for some tables */
@@ -1402,9 +1374,9 @@ table.dataTable.table-bordered td.selected {
 
 table.dataTable tbody > tr.selected,
 table.dataTable tbody > tr > .selected {
-  -webkit-box-shadow: inset 0 0 0px 1px #886ab5;
-          box-shadow: inset 0 0 0px 1px #886ab5;
-  background: rgba(136, 106, 181, 0.1);
+  -webkit-box-shadow: inset 0 0 0px 1px #2198F3;
+          box-shadow: inset 0 0 0px 1px #2198F3;
+  background: rgba(33, 152, 243, 0.1);
   font-weight: 500;
   color: inherit; }
 

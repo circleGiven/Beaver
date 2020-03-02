@@ -1,19 +1,12 @@
-import {Component, HostBinding, Renderer2} from '@angular/core';
-import {Router} from '@angular/router';
-import {SidebarService} from '../../services/sidebar.service';
-
+import {Component} from '@angular/core';
 @Component({
-  selector: 'header[component-board-header]',
-  templateUrl: './header.component.html'
+  templateUrl: './battle-ship-view.component.html'
 })
-export class HeaderComponent {
+export class BattleShipViewComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  @HostBinding('class.page-header')
-  private readonly class = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -23,16 +16,9 @@ export class HeaderComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  constructor(private readonly renderer: Renderer2,
-              private readonly router: Router,
-              private readonly sidebarService: SidebarService) {
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Implement Method
@@ -46,22 +32,9 @@ export class HeaderComponent {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  goToMainPage(): void {
-    this.router.navigate(['/']);
-  }
-
-  changeSidebarVisible(): void {
-    this.sidebarService.changeSidebarVisible();
-  }
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  private setHeaderOptions(): void {
-    // fix side bar
-    this.renderer.addClass(document.body, 'header-function-fixed');
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Inner Class

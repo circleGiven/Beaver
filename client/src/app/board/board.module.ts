@@ -8,13 +8,15 @@ import {SideBarComponent} from './component/side-bar.component';
 import {FooterComponent} from './component/footer.component';
 import {MainViewComponent} from './view/main-view.component';
 import {ClickOutsideModule} from 'ng-click-outside';
+import {BattleShipViewComponent} from './view/azurlane/battle-ship-view.component';
+import {MenuComponent} from './component/menu.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BoardComponent,
     children: [
-      {path: '', component: MainViewComponent}
+      {path: '', component: BattleShipViewComponent}
     ]
   }
 ];
@@ -32,7 +34,8 @@ const routes: Routes = [
     HeaderComponent,
     SideBarComponent,
     FooterComponent,
-    MainViewComponent
+    MainViewComponent,
+    MenuComponent
   ],
   providers: [],
 

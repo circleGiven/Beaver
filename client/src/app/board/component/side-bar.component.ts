@@ -1,6 +1,4 @@
-import {Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import {SidebarService} from '../../services/sidebar.service';
-import {Subscription} from 'rxjs';
+import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'aside[component-sidebar]',
@@ -15,8 +13,6 @@ export class SideBarComponent implements OnInit, OnDestroy {
   @HostBinding('class.page-sidebar')
   private readonly class = true;
 
-  private sidebarVisible$: Subscription;
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
@@ -25,19 +21,17 @@ export class SideBarComponent implements OnInit, OnDestroy {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-
   readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
 
   // TODO: 추후 API로 대체
   menuList;
-  isShowSidebar: boolean = true;
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   constructor(private readonly elementRef: ElementRef,
-              private readonly renderer: Renderer2,
-              private readonly sidebarService: SidebarService) {
+              private readonly renderer: Renderer2) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -45,13 +39,11 @@ export class SideBarComponent implements OnInit, OnDestroy {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   ngOnInit(): void {
-    this.setSideBarOption();
+    this.setSideBarOptions();
     this.setMenuList();
-    this.sidebarVisible$ = this.sidebarService.getSidebarVisible().subscribe(() => this.changeSidebarVisible());
   }
 
   ngOnDestroy(): void {
-    this.sidebarVisible$.unsubscribe();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -62,45 +54,28 @@ export class SideBarComponent implements OnInit, OnDestroy {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  changeSidebarVisible(): void {
-    if (this.isShowSidebar === true) {
-      this.hideSideBar();
-    } else {
-      this.showSideBar();
-    }
-  }
-
-  showSideBar(): void {
-    this.isShowSidebar = true;
-    this.renderer.removeClass(document.body, 'nav-function-hidden');
-    this.renderer.addClass(document.body, 'mobile-nav-on');
-  }
-
-  hideSideBar(): void {
-    this.isShowSidebar = false;
-    this.renderer.addClass(document.body, 'nav-function-hidden');
-    this.renderer.removeClass(document.body, 'mobile-nav-on');
-  }
-
-  clickOutsideSideBar(): void {
-    if (this.isShowSidebar === true) {
-      this.hideSideBar();
-    }
-  }
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  private setSideBarOption(): void {
+  private setSideBarOptions(): void {
     // fix side bar
-    this.renderer.addClass(document.body, 'nav-function-fixed');
+    this.renderer.addClass(document.body, 'nav-function-top');
   }
 
   private setMenuList(): void {
     this.menuList = [
-      {label: 'DB', value: 'DB'},
-      {label: '자유게시판', value: 'board'},
+      {label: 'Database', value: 'database', subMenuList: [
+          {label: '도크', value: 'doc'},
+          {label: '장비', value: 'item'},
+          {label: '이벤트', value: 'event'},
+        ]
+      },
+      {label: '커뮤니티', value: 'community', subMenuList: [
+          {label: '자유게시판', value: 'free'},
+          {label: '토론', value: 'discuss'},
+        ]
+      },
     ];
   }
 

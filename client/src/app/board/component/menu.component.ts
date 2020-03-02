@@ -1,19 +1,17 @@
-import {Component, HostBinding, Renderer2} from '@angular/core';
-import {Router} from '@angular/router';
-import {SidebarService} from '../../services/sidebar.service';
+import {Component, ElementRef, HostBinding, Input} from '@angular/core';
 
 @Component({
-  selector: 'header[component-board-header]',
-  templateUrl: './header.component.html'
+  selector: 'li[component-sidebar-menu]',
+  templateUrl: './menu.component.html'
 })
-export class HeaderComponent {
+export class MenuComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @HostBinding('class.page-header')
-  private readonly class = true;
+  @HostBinding('class.open')
+  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -23,15 +21,15 @@ export class HeaderComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
+  @Input()
+  readonly menu: {label: string, value, subMenuList: any[]};
+
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly renderer: Renderer2,
-              private readonly router: Router,
-              private readonly sidebarService: SidebarService) {
+  constructor(private readonly elementRef: ElementRef) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -46,22 +44,21 @@ export class HeaderComponent {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  goToMainPage(): void {
-    this.router.navigate(['/']);
+  isExistMenuIcon(menu): boolean {
+    return menu.icon;
   }
 
-  changeSidebarVisible(): void {
-    this.sidebarService.changeSidebarVisible();
+  isExistSubMenuList(menu): boolean {
+    return menu.subMenuList;
+  }
+
+  goToPage(menu): void {
+
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  private setHeaderOptions(): void {
-    // fix side bar
-    this.renderer.addClass(document.body, 'header-function-fixed');
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Inner Class
