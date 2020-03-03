@@ -3,14 +3,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BoardComponent} from './board.component';
-import {HeaderComponent} from './component/header.component';
-import {SideBarComponent} from './component/side-bar.component';
-import {FooterComponent} from './component/footer.component';
 import {MainViewComponent} from './view/main-view.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {BattleShipViewComponent} from './view/azurlane/battle-ship-view.component';
-import {MenuComponent} from './component/menu.component';
-import {LogoModule} from '../common/logo/logo.module';
+import {HeaderModule} from './component/header/header.module';
+import {FooterModule} from './component/footer/footer.module';
+import {NavigateModule} from './component/navigate/navigate.module';
 
 const routes: Routes = [
   {
@@ -28,18 +26,15 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     ClickOutsideModule,
-    LogoModule,
+    HeaderModule,
+    FooterModule,
+    NavigateModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
     BoardComponent,
-    HeaderComponent,
-    SideBarComponent,
-    FooterComponent,
     MainViewComponent,
-    MenuComponent
   ],
   providers: [],
-
 })
 export class BoardModule { }

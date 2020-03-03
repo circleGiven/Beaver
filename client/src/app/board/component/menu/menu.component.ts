@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input} from '@angular/core';
-import {Menu} from '../../domains/menu';
+import {Menu} from '../../../domains/menu';
 
 @Component({
   selector: 'li[component-sidebar-menu]',

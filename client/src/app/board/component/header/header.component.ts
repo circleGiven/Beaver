@@ -1,17 +1,16 @@
-import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import {Menu} from '../../domains/menu';
+import {Component, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
 
 @Component({
-  selector: 'aside[component-sidebar]',
-  templateUrl: './side-bar.component.html',
+  selector: 'header[component-board-header]',
+  templateUrl: './header.component.html'
 })
-export class SideBarComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @HostBinding('class.page-sidebar')
+  @HostBinding('class.page-header')
   private readonly class = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -22,15 +21,11 @@ export class SideBarComponent implements OnInit, OnDestroy {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  // TODO: 추후 API로 대체
-  menuList: Menu[];
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly elementRef: ElementRef,
-              private readonly renderer: Renderer2) {
+  constructor(private readonly renderer: Renderer2) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -38,11 +33,11 @@ export class SideBarComponent implements OnInit, OnDestroy {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   ngOnInit(): void {
-    this.setSideBarOptions();
-    this.setMenuList();
+    this.setHeaderOptions();
   }
 
   ngOnDestroy(): void {
+    this.removeHeaderOptions();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -57,23 +52,14 @@ export class SideBarComponent implements OnInit, OnDestroy {
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  private setSideBarOptions(): void {
+  private setHeaderOptions(): void {
     // fix side bar
-    this.renderer.addClass(document.body, 'nav-function-top');
+    this.renderer.addClass(document.body, 'header-function-fixed');
   }
 
-  private setMenuList(): void {
-    this.menuList = [
-      new Menu('Database', 'database', 'fal fa-database', [
-        new Menu('도크', 'doc'),
-        new Menu('장비', 'item'),
-        new Menu('이벤트', 'event'),
-      ]),
-      new Menu('커뮤니티', 'community', 'fal fa-database', [
-        new Menu('자유게시판', 'free'),
-        new Menu('토론', 'discuss'),
-      ]),
-    ];
+  private removeHeaderOptions(): void {
+    // remove fixed side bar
+    this.renderer.removeClass(document.body, 'header-function-fixed');
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
