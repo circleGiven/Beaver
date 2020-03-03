@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  templateUrl: './board.component.html'
+  templateUrl: './main.component.html'
 })
-export class BoardComponent {
+export class MainComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
