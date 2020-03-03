@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 
 @Component({
-  templateUrl: './authentication.component.html',
+  templateUrl: './dockyard-view.component.html'
 })
-export class AuthenticationComponent {
+export class DockyardViewComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -20,9 +20,6 @@ export class AuthenticationComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  constructor() {
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Implement Method

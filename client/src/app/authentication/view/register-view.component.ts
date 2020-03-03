@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {ToastrService} from 'ngx-toastr';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PatternConstant} from '../../constants/pattern.constant';
 import {mustMatch} from '../../validators/form.validator';
 import {duplicatedUserValidator} from '../../validators/user.validator';
@@ -35,8 +35,12 @@ export class RegisterViewComponent implements OnInit {
   constructor(private readonly formBuilder: FormBuilder,
               private readonly router: Router,
               private readonly spinner: NgxSpinnerService,
+              private readonly activatedRoute: ActivatedRoute,
               private readonly toastr: ToastrService,
               private readonly userService: UserService) {
+    this.activatedRoute.data.subscribe((value) => {
+      console.log(value);
+    });
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

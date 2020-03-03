@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -19,13 +19,14 @@ export class HeaderComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  isRegister: boolean;
+  @Input()
+  readonly authType: string;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor() {
+  constructor(private readonly router: Router) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -39,6 +40,26 @@ export class HeaderComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  isRegister(): boolean {
+    return this.authType === 'register';
+  }
+
+  goToPage(): void {
+    if (this.isRegister()) {
+      this.goToLoginPage();
+    } else {
+      this.goToRegisterPage();
+    }
+  }
+
+  goToLoginPage(): void {
+    this.router.navigateByUrl('/auth/login');
+  }
+
+  goToRegisterPage(): void {
+    this.router.navigateByUrl('/auth/register');
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

@@ -2,10 +2,10 @@
   <div class="d-flex align-items-center container p-0">
     <div component-logo></div>
     <span class="text-white opacity-50 ml-auto mr-2 hidden-xs-down">
-        이미 가입하셨나요?
+      {{isRegister() ? '이미 가입을 하셨나요?' : '아이디가 없으신가요?'}}
     </span>
-    <a href="javascript:" class="btn-link text-white ml-auto ml-sm-0">
-      {{isRegister ? '로그인' : '회원가입'}}
+    <a href="javascript:" class="btn-link text-white ml-auto ml-sm-0" (click)="goToPage()">
+      {{isRegister() ? '로그인' : '회원가입'}}
     </a>
   </div>
 </div>

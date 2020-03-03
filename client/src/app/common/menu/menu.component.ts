@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, Input} from '@angular/core';
+import {Menu} from '../../domains/menu';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'li[component-sidebar-menu]',
+  templateUrl: './menu.component.html'
 })
-export class AppComponent {
+export class MenuComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -18,16 +19,14 @@ export class AppComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  readonly spinnerType: string = 'square-spin';
-  readonly spinnerSize: string = 'medium';
-  readonly spinnerColor: string = '#fff';
-  readonly spinnerMessage: string = 'Loading...';
+  @Input()
+  readonly menu: Menu;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor() {
+  constructor(private readonly elementRef: ElementRef) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -41,6 +40,10 @@ export class AppComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  goToPage(menu): void {
+
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

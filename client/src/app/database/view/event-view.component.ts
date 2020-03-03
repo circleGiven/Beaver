@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
+
 @Component({
-  templateUrl: './battle-ship-view.component.html'
+  templateUrl: './event-view.component.html'
 })
-export class BattleShipViewComponent {
+export class EventViewComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {AlertModule} from '../alert/alert.module';
 import {HeaderComponent} from './header.component';
-import {LogoModule} from '../../../common/logo/logo.module';
+import {LogoModule} from '../logo/logo.module';
 import {ProfileModule} from '../profile/profile.module';
 
 @NgModule({

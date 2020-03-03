@@ -1,22 +1,16 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthenticationComponent} from './authentication.component';
 import {LoginViewComponent} from './view/login-view.component';
 import {RegisterViewComponent} from './view/register-view.component';
 import {CommonModule} from '@angular/common';
-import {HeaderComponent} from './component/header.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LogoModule} from '../common/logo/logo.module';
+import {HeaderModule} from './component/header/header.module';
+import {FooterModule} from './component/footer/footer.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AuthenticationComponent,
-    children: [
-      {path: 'register', component: RegisterViewComponent},
-      {path: 'login', component: LoginViewComponent},
-    ]
-  }
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'register', component: RegisterViewComponent},
+  {path: 'login', component: LoginViewComponent},
 ];
 
 @NgModule({
@@ -24,12 +18,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LogoModule,
+    HeaderModule,
+    FooterModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
-    AuthenticationComponent,
-    HeaderComponent,
     LoginViewComponent,
     RegisterViewComponent
   ],

@@ -1,15 +1,29 @@
-import {Component, ElementRef, Input} from '@angular/core';
-import {Menu} from '../../../domains/menu';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
-  selector: 'li[component-sidebar-menu]',
-  templateUrl: './menu.component.html'
+  selector: 'div[component-footer]',
+  templateUrl: './footer.component.html'
 })
-export class MenuComponent {
+export class FooterComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  @HostBinding('class.position-absolute')
+  private readonly class1: boolean = true;
+  @HostBinding('class.pos-bottom')
+  private readonly class2: boolean = true;
+  @HostBinding('class.pos-left')
+  private readonly class3: boolean = true;
+  @HostBinding('class.pos-right')
+  private readonly class4: boolean = true;
+  @HostBinding('class.text-center')
+  private readonly class5: boolean = true;
+  @HostBinding('class.text-white')
+  private readonly class6: boolean = true;
+  @HostBinding('class.p-3')
+  private readonly class7: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -19,14 +33,11 @@ export class MenuComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @Input()
-  readonly menu: Menu;
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor() {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -40,10 +51,6 @@ export class MenuComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  goToPage(menu): void {
-
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

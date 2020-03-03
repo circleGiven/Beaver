@@ -1,13 +1,21 @@
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
-  templateUrl: 'main-view.component.html'
+  selector: 'div[component-search]',
+  templateUrl: './search.component.html'
 })
-export class MainViewComponent {
+export class SearchComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  @HostBinding('class.input-group')
+  private readonly class1 = true;
+  @HostBinding('class.input-group-lg')
+  private readonly class2 = true;
+  @HostBinding('class.mb-g')
+  private readonly class3 = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
