@@ -1,4 +1,4 @@
-import {Component, HostBinding, Renderer2} from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {Router} from '@angular/router';
 import {SidebarService} from '../../services/sidebar.service';
 
@@ -6,7 +6,7 @@ import {SidebarService} from '../../services/sidebar.service';
   selector: 'header[component-board-header]',
   templateUrl: './header.component.html'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -23,20 +23,24 @@ export class HeaderComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly renderer: Renderer2,
-              private readonly router: Router,
-              private readonly sidebarService: SidebarService) {
+  constructor(private readonly renderer: Renderer2) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Implement Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  ngOnInit(): void {
+    this.setHeaderOptions();
+  }
+
+  ngOnDestroy(): void {
+    this.removeHeaderOptions();
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Override Method
@@ -46,14 +50,6 @@ export class HeaderComponent {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  goToMainPage(): void {
-    this.router.navigate(['/']);
-  }
-
-  changeSidebarVisible(): void {
-    this.sidebarService.changeSidebarVisible();
-  }
-
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
@@ -61,6 +57,11 @@ export class HeaderComponent {
   private setHeaderOptions(): void {
     // fix side bar
     this.renderer.addClass(document.body, 'header-function-fixed');
+  }
+
+  private removeHeaderOptions(): void {
+    // remove fixed side bar
+    this.renderer.removeClass(document.body, 'header-function-fixed');
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

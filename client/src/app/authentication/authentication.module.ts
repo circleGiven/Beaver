@@ -6,6 +6,7 @@ import {RegisterViewComponent} from './view/register-view.component';
 import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './component/header.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LogoModule} from '../common/logo/logo.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    LogoModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

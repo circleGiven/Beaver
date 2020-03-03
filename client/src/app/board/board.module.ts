@@ -10,6 +10,7 @@ import {MainViewComponent} from './view/main-view.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {BattleShipViewComponent} from './view/azurlane/battle-ship-view.component';
 import {MenuComponent} from './component/menu.component';
+import {LogoModule} from '../common/logo/logo.module';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     ClickOutsideModule,
+    LogoModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

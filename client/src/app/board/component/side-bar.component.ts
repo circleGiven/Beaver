@@ -21,8 +21,6 @@ export class SideBarComponent implements OnInit, OnDestroy {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  readonly LOGO_IMAGE_PATH: string = '../../assets/img/beaver.png';
-
   // TODO: 추후 API로 대체
   menuList;
 
