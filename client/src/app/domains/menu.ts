@@ -1,11 +1,6 @@
-import {Component, ElementRef, Input} from '@angular/core';
-import {Menu} from '../../domains/menu';
+import {isEmpty} from 'lodash';
 
-@Component({
-  selector: 'li[component-sidebar-menu]',
-  templateUrl: './menu.component.html'
-})
-export class MenuComponent {
+export class Menu {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -19,14 +14,20 @@ export class MenuComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @Input()
-  readonly menu: Menu;
+  icon?: string;
+  label: string;
+  value: string;
+  subMenuList?: Menu[];
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor(label: string, value: string, icon?: string, subMenuList?: Menu[]) {
+    this.label = label;
+    this.value = value;
+    this.icon = icon;
+    this.subMenuList = subMenuList;
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -41,8 +42,12 @@ export class MenuComponent {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  goToPage(menu): void {
+  isExistMenuIcon(): boolean {
+    return isEmpty(this.icon) === false;
+  }
 
+  isExistSubMenuList(): boolean {
+    return isEmpty(this.subMenuList) === false;
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

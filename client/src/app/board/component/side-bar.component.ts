@@ -1,4 +1,5 @@
 import {Component, ElementRef, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {Menu} from '../../domains/menu';
 
 @Component({
   selector: 'aside[component-sidebar]',
@@ -22,7 +23,7 @@ export class SideBarComponent implements OnInit, OnDestroy {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   // TODO: 추후 API로 대체
-  menuList;
+  menuList: Menu[];
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
@@ -63,17 +64,15 @@ export class SideBarComponent implements OnInit, OnDestroy {
 
   private setMenuList(): void {
     this.menuList = [
-      {label: 'Database', value: 'database', subMenuList: [
-          {label: '도크', value: 'doc'},
-          {label: '장비', value: 'item'},
-          {label: '이벤트', value: 'event'},
-        ]
-      },
-      {label: '커뮤니티', value: 'community', subMenuList: [
-          {label: '자유게시판', value: 'free'},
-          {label: '토론', value: 'discuss'},
-        ]
-      },
+      new Menu('Database', 'database', 'fal fa-database', [
+        new Menu('도크', 'doc'),
+        new Menu('장비', 'item'),
+        new Menu('이벤트', 'event'),
+      ]),
+      new Menu('커뮤니티', 'community', 'fal fa-database', [
+        new Menu('자유게시판', 'free'),
+        new Menu('토론', 'discuss'),
+      ]),
     ];
   }
 
