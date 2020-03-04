@@ -797,8 +797,8 @@ html body {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1; }
-  .page-header .page-logo {
-    display: none; }
+  /*.page-header .page-logo {*/
+  /*  display: none;}*/
   .page-header .badge-icon {
     left: 1.5625rem;
     top: 1.09375rem; }

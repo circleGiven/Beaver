@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @HostBinding('class.page-header')
   private readonly class = true;
+  @HostBinding('style.background-color')
+  private readonly style = '#0f619f';
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
