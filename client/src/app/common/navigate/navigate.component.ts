@@ -54,6 +54,8 @@ export class NavigateComponent implements OnInit, OnDestroy {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
@@ -74,14 +76,14 @@ export class NavigateComponent implements OnInit, OnDestroy {
 
   private setMenuList(): void {
     this.menuList = [
-      new Menu('Database', 'database', 'fal fa-database', [
-        new Menu('도크', 'doc'),
-        new Menu('장비', 'item'),
-        new Menu('이벤트', 'event'),
+      new Menu('Database', '/database', 'fal fa-database', [
+        new Menu('도크', '/database/dockyard'),
+        new Menu('장비', '/database/equipment'),
+        new Menu('이벤트', '/database/event'),
       ]),
-      new Menu('커뮤니티', 'community', 'fal fa-database', [
-        new Menu('자유게시판', 'free'),
-        new Menu('토론', 'discuss'),
+      new Menu('커뮤니티', '/community', 'fal fa-database', [
+        new Menu('자유게시판', '/community/free'),
+        new Menu('토론', '/community/discuss'),
       ]),
     ];
   }

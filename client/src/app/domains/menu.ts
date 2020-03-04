@@ -16,16 +16,16 @@ export class Menu {
 
   icon?: string;
   label: string;
-  value: string;
+  url: string;
   subMenuList?: Menu[];
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(label: string, value: string, icon?: string, subMenuList?: Menu[]) {
+  constructor(label: string, url: string, icon?: string, subMenuList?: Menu[]) {
     this.label = label;
-    this.value = value;
+    this.url = url;
     this.icon = icon;
     this.subMenuList = subMenuList;
   }

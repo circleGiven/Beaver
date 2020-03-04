@@ -1,8 +1,9 @@
 import {Component, ElementRef, Input} from '@angular/core';
 import {Menu} from '../../domains/menu';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'li[component-sidebar-menu]',
+  selector: 'li[component-navigate-menu]',
   templateUrl: './menu.component.html'
 })
 export class MenuComponent {
@@ -26,7 +27,8 @@ export class MenuComponent {
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor(private readonly elementRef: ElementRef,
+              private readonly router: Router) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -41,8 +43,8 @@ export class MenuComponent {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  goToPage(menu): void {
-
+  goToPage(): void {
+    this.router.navigateByUrl(this.menu.url);
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

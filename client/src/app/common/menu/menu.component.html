@@ -1,8 +1,8 @@
-<a href="javascript:" title="{{menu.label}}" class=" waves-effect waves-themed" (click)="goToPage(menu)">
+<a href="javascript:" title="{{menu.label}}" class=" waves-effect waves-themed" (click)="goToPage()">
   <i *ngIf="menu.isExistMenuIcon()" [ngClass]="menu.icon"></i>
   <span class="nav-link-text">{{menu.label}}</span>
   <b class="collapse-sign" *ngIf="menu.isExistSubMenuList()"><em class="fal fa-angle-down"></em></b>
 </a>
 <ul *ngIf="menu.isExistSubMenuList()">
-  <li component-sidebar-menu *ngFor="let subMenu of menu.subMenuList" [menu]="subMenu"></li>
+  <li component-navigate-menu *ngFor="let subMenu of menu.subMenuList" [menu]="subMenu"></li>
 </ul>
