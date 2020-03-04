@@ -26,9 +26,9 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
+    AuthenticationComponent,
     LoginViewComponent,
-    RegisterViewComponent,
-    AuthenticationComponent
+    RegisterViewComponent
   ],
   providers: [],
 

@@ -14,6 +14,9 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes)
   ],
-  declarations: [],
+  declarations: [
+    Error404ViewComponent,
+    Error500ViewComponent
+  ],
 })
 export class ErrorModule {}
