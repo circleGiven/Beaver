@@ -1,14 +1,13 @@
-import {Component, HostBinding} from '@angular/core';
-import {PageWrapperAbstractComponent} from '../common/abstract/page-wrapper-abstract.component';
+import {HostBinding} from '@angular/core';
 
-@Component({
-  templateUrl: './main.component.html'
-})
-export class MainComponent extends PageWrapperAbstractComponent {
+export abstract class PageContentAbstractComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  @HostBinding('class.page-content')
+  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -21,10 +20,6 @@ export class MainComponent extends PageWrapperAbstractComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  constructor() {
-    super();
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Implement Method

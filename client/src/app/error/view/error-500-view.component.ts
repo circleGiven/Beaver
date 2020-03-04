@@ -1,17 +1,15 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
 
 @Component({
   templateUrl: './error-500-view.component.html'
 })
-export class Error500ViewComponent {
+export class Error500ViewComponent extends PageContentAbstractComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  @HostBinding('class.page-content')
-  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -26,6 +24,7 @@ export class Error500ViewComponent {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   constructor(private readonly router: Router) {
+    super();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

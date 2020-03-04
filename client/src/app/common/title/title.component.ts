@@ -1,14 +1,17 @@
-import {Component, HostBinding} from '@angular/core';
-import {PageWrapperAbstractComponent} from '../common/abstract/page-wrapper-abstract.component';
+import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
-  templateUrl: './main.component.html'
+  selector: 'div[component-title]',
+  templateUrl: './title.component.html'
 })
-export class MainComponent extends PageWrapperAbstractComponent {
+export class TitleComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  @HostBinding('class.subheader')
+  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -18,12 +21,14 @@ export class MainComponent extends PageWrapperAbstractComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+  @Input()
+  readonly title: string;
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   constructor() {
-    super();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

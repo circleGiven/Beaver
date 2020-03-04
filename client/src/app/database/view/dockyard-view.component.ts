@@ -1,16 +1,14 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component} from '@angular/core';
+import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
 
 @Component({
   templateUrl: './dockyard-view.component.html'
 })
-export class DockyardViewComponent {
+export class DockyardViewComponent extends PageContentAbstractComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  @HostBinding('class.page-content')
-  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -19,6 +17,8 @@ export class DockyardViewComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  readonly title: string = '도크';
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor

@@ -1,17 +1,15 @@
 import {Component, HostBinding} from '@angular/core';
 import {Router} from '@angular/router';
+import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
 
 @Component({
   templateUrl: './error-404-view.component.html'
 })
-export class Error404ViewComponent {
+export class Error404ViewComponent extends PageContentAbstractComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  @HostBinding('class.page-content')
-  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -26,6 +24,7 @@ export class Error404ViewComponent {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   constructor(private readonly router: Router) {
+    super();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

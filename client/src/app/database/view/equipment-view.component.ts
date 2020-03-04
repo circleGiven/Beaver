@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
+import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
 
 @Component({
   templateUrl: './equipment-view.component.html'
 })
-export class EquipmentViewComponent {
+export class EquipmentViewComponent extends PageContentAbstractComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -16,6 +17,8 @@ export class EquipmentViewComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  readonly title: string = '장비';
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
