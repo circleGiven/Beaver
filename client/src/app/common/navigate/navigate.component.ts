@@ -38,11 +38,12 @@ export class NavigateComponent implements OnInit, OnDestroy {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   ngOnInit(): void {
-    this.setSideBarOptions();
+    this.setNavigateOptions();
     this.setMenuList();
   }
 
   ngOnDestroy(): void {
+    this.removeNavigateOptions();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -57,9 +58,18 @@ export class NavigateComponent implements OnInit, OnDestroy {
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  private setSideBarOptions(): void {
-    // fix side bar
+  private setNavigateOptions(): void {
+    // set top position
     this.renderer.addClass(document.body, 'nav-function-top');
+    // fixed position
+    this.renderer.addClass(document.body, 'nav-function-fixed');
+  }
+
+  private removeNavigateOptions(): void {
+    // remove top position
+    this.renderer.removeClass(document.body, 'nav-function-top');
+    // remove position
+    this.renderer.removeClass(document.body, 'nav-function-fixed');
   }
 
   private setMenuList(): void {

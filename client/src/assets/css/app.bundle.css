@@ -1085,8 +1085,8 @@ html body {
     transition: none !important; }
 
 @media (min-width: 992px) {
-  .header-function-fixed:not(.nav-function-top) .page-header {
-    margin-left: 16.875rem; }
+  /*.header-function-fixed:not(.nav-function-top) .page-header {*/
+  /*  margin-left: 16.875rem; }*/
   .header-function-fixed:not(.nav-function-top).nav-function-minify .page-sidebar .page-logo {
     width: 4.6875rem; }
   .header-function-fixed.nav-function-top {
@@ -6940,8 +6940,8 @@ body:not(.no-slimscroll) .custom-scroll {
       position: absolute !important;
       top: 0;
       bottom: 0; }
-    .mod-main-boxed.header-function-fixed:not(.nav-function-top):not(.nav-function-hidden):not(.nav-function-minify) .page-wrapper .page-header {
-      padding-left: 18.875rem; }
+    /*.mod-main-boxed.header-function-fixed:not(.nav-function-top):not(.nav-function-hidden):not(.nav-function-minify) .page-wrapper .page-header {*/
+    /*  padding-left: 18.875rem; }*/
     .mod-main-boxed.header-function-fixed:not(.nav-function-top):not(.nav-function-hidden):not(.nav-function-minify):not(.nav-function-fixed) .page-content {
       margin-left: 16.875rem; }
     .mod-main-boxed.header-function-fixed.nav-function-minify:not(.nav-function-top):not(.nav-function-hidden) .page-wrapper .page-header {

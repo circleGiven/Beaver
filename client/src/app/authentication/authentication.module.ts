@@ -4,7 +4,7 @@ import {LoginViewComponent} from './view/login-view.component';
 import {RegisterViewComponent} from './view/register-view.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HeaderModule} from './component/header/header.module';
+import {HeaderModule} from '../common/header/header.module';
 import {FooterModule} from './component/footer/footer.module';
 
 const routes: Routes = [
