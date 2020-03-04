@@ -1,20 +1,17 @@
-import {Component, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'header[component-header]',
-  templateUrl: './header.component.html'
+  templateUrl: './error-500-view.component.html'
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class Error500ViewComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @HostBinding('class.page-header')
-  private readonly class = true;
-  @HostBinding('style.background-color')
-  private readonly style = '#0f619f';
+  @HostBinding('class.page-content')
+  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -28,23 +25,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly renderer: Renderer2,
-              private readonly router: Router) {
-
+  constructor(private readonly router: Router) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Implement Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  ngOnInit(): void {
-    this.setHeaderOptions();
-    console.log(this.router.url);
-  }
-
-  ngOnDestroy(): void {
-    this.removeHeaderOptions();
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Override Method
@@ -54,19 +40,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+  goToMainPage(): void {
+    this.router.navigateByUrl('/');
+  }
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  private setHeaderOptions(): void {
-    // fix side bar
-    this.renderer.addClass(document.body, 'header-function-fixed');
-  }
-
-  private removeHeaderOptions(): void {
-    // remove fixed side bar
-    this.renderer.removeClass(document.body, 'header-function-fixed');
-  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Inner Class

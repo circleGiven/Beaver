@@ -4,8 +4,6 @@ import {DockyardViewComponent} from './view/dockyard-view.component';
 import {EquipmentViewComponent} from './view/equipment-view.component';
 import {EventViewComponent} from './view/event-view.component';
 import {SearchModule} from '../common/search/search.module';
-import {NavigateModule} from '../common/navigate/navigate.module';
-import {HeaderModule} from '../common/header/header.module';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dockyard', pathMatch: 'full'},
@@ -16,8 +14,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    NavigateModule,
-    HeaderModule,
     SearchModule,
     RouterModule.forChild(routes)
   ],

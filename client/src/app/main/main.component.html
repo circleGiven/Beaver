@@ -1,20 +1,16 @@
-<div class="page-wrapper">
-  <div class="page-inner">
-    <!-- Left Aside -->
-    <aside component-navigate></aside>
-    <!-- //Left Aside -->
-    <div class="page-content-wrapper">
-      <!-- Page Header -->
-      <header component-board-header></header>
-      <!-- //Page Header -->
-      <!-- Page Content -->
-      <main class="page-content">
-
-      </main>
-      <!-- //Page Content -->
-      <!-- Page Footer -->
-      <footer component-footer></footer>
-      <!-- //Page Footer -->
-    </div>
+<div class="page-inner">
+  <!-- Left Aside -->
+  <aside component-navigate></aside>
+  <!-- //Left Aside -->
+  <div class="page-content-wrapper">
+    <!-- Page Header -->
+    <header component-header></header>
+    <!-- //Page Header -->
+    <!-- Page Content -->
+    <router-outlet></router-outlet>
+    <!-- //Page Content -->
+    <!-- Page Footer -->
+    <footer component-footer></footer>
+    <!-- //Page Footer -->
   </div>
 </div>

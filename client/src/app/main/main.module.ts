@@ -8,8 +8,10 @@ import {NavigateModule} from '../common/navigate/navigate.module';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MainComponent,
+    path: '', component: MainComponent, children: [
+      {path: 'database', loadChildren: () => import('../database/database.module').then(m => m.DatabaseModule)},
+      {path: 'error', loadChildren: () => import('../error/error.module').then(m => m.ErrorModule)},
+    ]
   }
 ];
 

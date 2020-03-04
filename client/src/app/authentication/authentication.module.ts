@@ -6,11 +6,14 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HeaderModule} from '../common/header/header.module';
 import {FooterModule} from './component/footer/footer.module';
+import {AuthenticationComponent} from './authentication.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'register', component: RegisterViewComponent},
-  {path: 'login', component: LoginViewComponent},
+  {path: '', component: AuthenticationComponent, children: [
+      {path: '', redirectTo: 'login', pathMatch: 'full'},
+      {path: 'register', component: RegisterViewComponent},
+      {path: 'login', component: LoginViewComponent},
+  ]}
 ];
 
 @NgModule({
@@ -24,7 +27,8 @@ const routes: Routes = [
   ],
   declarations: [
     LoginViewComponent,
-    RegisterViewComponent
+    RegisterViewComponent,
+    AuthenticationComponent
   ],
   providers: [],
 
