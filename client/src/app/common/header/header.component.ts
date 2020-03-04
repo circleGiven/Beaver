@@ -1,5 +1,6 @@
 import {Component, HostBinding, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, Scroll} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'header[component-header]',
@@ -24,13 +25,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+  pageType: 'login' | 'register' | 'default';
+  isLogged: boolean;
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   constructor(private readonly renderer: Renderer2,
               private readonly router: Router) {
-
+    router.events.pipe(filter(e => e instanceof Scroll)).subscribe((val: Scroll) => {
+      const urlAfterRedirects: string = val.routerEvent.urlAfterRedirects;
+      // Authentication에 접근했는지 여부
+      if (urlAfterRedirects.startsWith('/auth') === true) {
+        const splicedUrl: string = urlAfterRedirects.replace('/auth', '');
+        // login
+        if (splicedUrl.startsWith('/login')) {
+          this.pageType = 'login';
+        }
+        // register
+        else if (splicedUrl.startsWith('/register')) {
+          this.pageType = 'register';
+        }
+      } else {
+        this.pageType = 'default';
+      }
+    });
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -39,7 +59,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setHeaderOptions();
-    console.log(this.router.url);
   }
 
   ngOnDestroy(): void {
@@ -53,6 +72,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  goToLogin(): void {
+    this.router.navigateByUrl('/auth/login');
+  }
+
+  goToRegister(): void {
+    this.router.navigateByUrl('/auth/register');
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

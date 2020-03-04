@@ -3,14 +3,25 @@
 <!-- //logo -->
 <!-- right -->
 <div class="ml-auto d-flex align-items-center">
-  <a href="javascript:" class="btn-link" style="color: #fff">
-    로그인
-  </a>
-  <!-- 알림 -->
-  <div component-alert></div>
-  <!-- //알림 -->
-  <!-- 프로필 or 로그인 -->
-  <div component-profile></div>
-  <!-- //프로필 or 로그인 -->
+  <ng-container *ngIf="pageType !== 'default' else default">
+    <ng-container *ngIf="pageType === 'login'">
+      <a href="javascript:" class="btn-link" style="color: #fff" (click)="goToRegister()">
+        회원가입
+      </a>
+    </ng-container>
+    <ng-container *ngIf="pageType === 'register'">
+      <a href="javascript:" class="btn-link" style="color: #fff" (click)="goToLogin()">
+        로그인
+      </a>
+    </ng-container>
+  </ng-container>
+  <ng-template #default>
+    <!-- 알림 -->
+    <div component-alert></div>
+    <!-- //알림 -->
+    <!-- 프로필 or 로그인 -->
+    <div component-profile></div>
+    <!-- //프로필 or 로그인 -->
+  </ng-template>
 </div>
 <!-- //right -->
