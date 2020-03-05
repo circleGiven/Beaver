@@ -1,10 +1,10 @@
 import {Component, HostBinding} from '@angular/core';
-import {PageWrapperAbstractComponent} from '../common/abstract/page-wrapper-abstract.component';
+import {AbstractPageWrapperComponent} from '../common/abstract/abstract-page-wrapper.component';
 
 @Component({
   templateUrl: './main.component.html'
 })
-export class MainComponent extends PageWrapperAbstractComponent {
+export class MainComponent extends AbstractPageWrapperComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables

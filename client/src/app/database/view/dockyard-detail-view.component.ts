@@ -1,13 +1,14 @@
-import {HostBinding} from '@angular/core';
+import {AbstractPageContentComponent} from '../../common/abstract/abstract-page-content.component';
+import {Component} from '@angular/core';
 
-export abstract class PageWrapperAbstractComponent {
+@Component({
+  templateUrl: './dockyard-detail-view.component.html'
+})
+export class DockyardDetailViewComponent extends AbstractPageContentComponent  {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-  @HostBinding('class.page-wrapper')
-  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables

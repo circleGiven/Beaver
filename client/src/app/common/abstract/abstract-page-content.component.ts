@@ -1,14 +1,13 @@
-import {Component} from '@angular/core';
-import {AbstractPageWrapperComponent} from '../common/abstract/abstract-page-wrapper.component';
+import {HostBinding} from '@angular/core';
 
-@Component({
-  templateUrl: './authentication.component.html'
-})
-export class AuthenticationComponent extends AbstractPageWrapperComponent {
+export abstract class AbstractPageContentComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  @HostBinding('class.page-content')
+  private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables

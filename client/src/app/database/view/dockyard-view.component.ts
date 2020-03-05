@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
+import {AbstractPageContentComponent} from '../../common/abstract/abstract-page-content.component';
 
 @Component({
   templateUrl: './dockyard-view.component.html'
 })
-export class DockyardViewComponent extends PageContentAbstractComponent {
+export class DockyardViewComponent extends AbstractPageContentComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables

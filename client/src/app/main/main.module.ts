@@ -5,11 +5,15 @@ import {MainComponent} from './main.component';
 import {HeaderModule} from '../common/header/header.module';
 import {FooterModule} from '../common/footer/footer.module';
 import {NavigateModule} from '../common/navigate/navigate.module';
+import {MyPageComponent} from '../my-page/my-page.component';
+import {TitleModule} from '../common/title/title.module';
 
 const routes: Routes = [
   {
     path: '', component: MainComponent, children: [
       {path: 'database', loadChildren: () => import('../database/database.module').then(m => m.DatabaseModule)},
+      {path: 'community', loadChildren: () => import('../community/community.module').then(m => m.CommunityModule)},
+      {path: 'my', component: MyPageComponent},
       {path: 'error', loadChildren: () => import('../error/error.module').then(m => m.ErrorModule)},
     ]
   }
@@ -21,10 +25,12 @@ const routes: Routes = [
     HeaderModule,
     FooterModule,
     NavigateModule,
-    RouterModule.forChild(routes)
+    TitleModule,
+    RouterModule.forChild(routes),
   ],
   declarations: [
-    MainComponent
+    MainComponent,
+    MyPageComponent
   ],
   providers: [],
 })

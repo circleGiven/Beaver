@@ -1,10 +1,10 @@
+import {AbstractPageContentComponent} from '../../common/abstract/abstract-page-content.component';
 import {Component} from '@angular/core';
-import {AbstractPageWrapperComponent} from '../common/abstract/abstract-page-wrapper.component';
 
 @Component({
-  templateUrl: './authentication.component.html'
+  templateUrl: './free-view.component.html'
 })
-export class AuthenticationComponent extends AbstractPageWrapperComponent {
+export class FreeViewComponent extends AbstractPageContentComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -17,6 +17,8 @@ export class AuthenticationComponent extends AbstractPageWrapperComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  readonly title: string = '자유게시판';
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor

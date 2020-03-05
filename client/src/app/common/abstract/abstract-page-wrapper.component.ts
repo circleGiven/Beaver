@@ -1,12 +1,12 @@
 import {HostBinding} from '@angular/core';
 
-export abstract class PageContentAbstractComponent {
+export abstract class AbstractPageWrapperComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  @HostBinding('class.page-content')
+  @HostBinding('class.page-wrapper')
   private readonly class: boolean = true;
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

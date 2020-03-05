@@ -1,4 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
+import {isNil} from 'lodash';
 
 @Component({
   selector: 'div[component-title]',
@@ -24,6 +25,12 @@ export class TitleComponent {
   @Input()
   readonly title: string;
 
+  @Input()
+  readonly subTitle: string;
+
+  @Input()
+  readonly iconClass: string;
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
@@ -42,6 +49,14 @@ export class TitleComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  isExistIcon(): boolean {
+    return isNil(this.iconClass) === false;
+  }
+
+  isExistSubTitle(): boolean {
+    return isNil(this.subTitle) === false;
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method

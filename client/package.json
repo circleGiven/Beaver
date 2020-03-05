@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "chart.js": "^2.9.3",
     "lodash": "^4.17.15",
     "ng-click-outside": "^6.0.0",
     "ngx-spinner": "^8.1.0",

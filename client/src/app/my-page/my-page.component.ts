@@ -1,10 +1,10 @@
+import {AbstractPageContentComponent} from '../common/abstract/abstract-page-content.component';
 import {Component} from '@angular/core';
-import {AbstractPageWrapperComponent} from '../common/abstract/abstract-page-wrapper.component';
 
 @Component({
-  templateUrl: './authentication.component.html'
+  templateUrl: './my-page.component.html'
 })
-export class AuthenticationComponent extends AbstractPageWrapperComponent {
+export class MyPageComponent extends AbstractPageContentComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables

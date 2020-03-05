@@ -1,11 +1,11 @@
 import {Component, HostBinding} from '@angular/core';
 import {Router} from '@angular/router';
-import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
+import {AbstractPageContentComponent} from '../../common/abstract/abstract-page-content.component';
 
 @Component({
   templateUrl: './error-404-view.component.html'
 })
-export class Error404ViewComponent extends PageContentAbstractComponent {
+export class Error404ViewComponent extends AbstractPageContentComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables

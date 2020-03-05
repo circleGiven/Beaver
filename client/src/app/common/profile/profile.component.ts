@@ -1,4 +1,5 @@
-import {Component, ElementRef, HostBinding, HostListener} from '@angular/core';
+import {Component, ElementRef, HostListener} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'div[component-profile]',
@@ -31,7 +32,8 @@ export class ProfileComponent {
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor(private readonly elementRef: ElementRef,
+              private readonly router: Router) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -55,11 +57,13 @@ export class ProfileComponent {
   }
 
   goToProfileSettings(): void {
-
+    this.closeProfile();
+    this.router.navigateByUrl('/my');
   }
 
   logOut(): void {
-    // logout
+    // TODO logout
+    this.closeProfile();
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

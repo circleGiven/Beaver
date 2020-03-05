@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {PageContentAbstractComponent} from '../../common/abstract/page-content-abstract.component';
+import {AbstractPageContentComponent} from '../../common/abstract/abstract-page-content.component';
 
 @Component({
   templateUrl: './equipment-view.component.html'
 })
-export class EquipmentViewComponent extends PageContentAbstractComponent {
+export class EquipmentViewComponent extends AbstractPageContentComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables

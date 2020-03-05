@@ -1,10 +1,13 @@
-import {Component} from '@angular/core';
-import {AbstractPageWrapperComponent} from '../common/abstract/abstract-page-wrapper.component';
+import {Component, HostBinding, Input} from '@angular/core';
+import {isNil} from 'lodash';
+import {Router} from '@angular/router';
+import {AbstractCardWrapperComponent} from '../../../common/abstract/abstract-card-wrapper.component';
 
 @Component({
-  templateUrl: './authentication.component.html'
+  selector: 'div[component-item]',
+  templateUrl: 'item.component.html'
 })
-export class AuthenticationComponent extends AbstractPageWrapperComponent {
+export class ItemComponent extends AbstractCardWrapperComponent {
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | private Variables
@@ -18,9 +21,26 @@ export class AuthenticationComponent extends AbstractPageWrapperComponent {
   | Public Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+  @Input()
+  readonly image: string;
+
+  @Input()
+  readonly name: string;
+
+  @Input()
+  readonly description: string;
+
+  @Input()
+  readonly routerLink: string;
+
+
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Constructor
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  constructor(private readonly router: Router) {
+    super();
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Implement Method
@@ -33,6 +53,16 @@ export class AuthenticationComponent extends AbstractPageWrapperComponent {
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Public Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+  isExistDescription(): boolean {
+    return isNil(this.description) === false;
+  }
+
+  goToPage(): void {
+    if (isNil(this.routerLink) === false) {
+      this.router.navigateByUrl(this.routerLink);
+    }
+  }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Private Method
