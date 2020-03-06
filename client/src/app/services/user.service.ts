@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {AjaxResponse} from '../interfaces/ajax-response';
 import {tap} from 'rxjs/operators';
 import {ValidateUtil} from '../utils/validate.util';
+import {environment} from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -11,9 +12,11 @@ export class UserService {
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
+  private readonly API: string = environment.api;
+
   private readonly TOKEN_KEY = 'BEAVER_TOKEN';
-  private readonly URL_USER = '/api/user';
-  private readonly URL_AUTH = '/api/auth';
+  private readonly URL_USER = this.API + '/user';
+  private readonly URL_AUTH = this.API + '/auth';
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
