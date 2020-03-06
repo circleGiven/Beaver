@@ -7,6 +7,7 @@ import {SearchModule} from '../common/search/search.module';
 import {TitleModule} from '../common/title/title.module';
 import {DockyardDetailViewComponent} from './view/dockyard-detail-view.component';
 import {ItemModule} from './component/item/item.module';
+import {TierComponent} from '../common/tier/tier.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dockyard', pathMatch: 'full'},
@@ -23,11 +24,12 @@ const routes: Routes = [
     ItemModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [
-    DockyardViewComponent,
-    EquipmentViewComponent,
-    EventViewComponent,
-    DockyardDetailViewComponent
-  ]
+    declarations: [
+        DockyardViewComponent,
+        EquipmentViewComponent,
+        EventViewComponent,
+        DockyardDetailViewComponent,
+        TierComponent
+    ]
 })
 export class DatabaseModule {}

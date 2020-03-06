@@ -10,6 +10,8 @@
           <ul class="nav nav-tabs nav-fill" role="tablist">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_justified-1" role="tab" aria-selected="false">설명</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_justified-2" role="tab" aria-selected="false">스킨</a></li>
+            <li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#tab_justified-2" role="tab" aria-selected="false">대사</a></li>
+            <li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#tab_justified-2" role="tab" aria-selected="false">수정 이력</a></li>
           </ul>
           <div class="tab-content p-3">
             <div class="tab-pane fade active show" id="tab_direction-1" role="tabpanel">
@@ -23,67 +25,162 @@
                         <div class="d-flex flex-column align-items-center justify-content-center p-4">
                           <img src="../../../assets/img/azurlane/ship/enterprise.png" class="shadow-2 card-img">
                           <h5 class="mb-0 fw-700 text-center mt-3">
-                            Dr. Codex Lantern
-                            <small class="text-muted mb-0">Toronto, Canada</small>
+                            엔터프라이즈
+                            <span component-tier [tier]="'SSR'"></span>
+                            <small class="text-muted mb-0">Enterprise, Canadam, Canada</small>
                           </h5>
                         </div>
                       </div>
-                      <div class="col-6">
+                      <div class="col-4">
                         <div class="text-center py-3">
-                          <a href="javascript:void(0);" class="width-3 height-2 d-inline-flex align-items-center justify-content-center position-relative h1 text-primary">
-                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/oil.png">
-                            <span class="badge badge-icon pos-top pos-right">7</span>
-                          </a>
-                          <a href="javascript:void(0);" class="width-3 height-2 d-inline-flex align-items-center justify-content-center position-relative h1 text-primary">
-                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/oil.png">
-                            <span class="badge badge-icon pos-top pos-right">9</span>
-                          </a>
-                          <a href="javascript:void(0);" class="width-3 height-2 d-inline-flex align-items-center justify-content-center position-relative h1 text-primary">
-                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/oil.png">
-                            <span class="badge badge-icon pos-top pos-right">11</span>
-                          </a>
+                          <h5>
+                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/uss.png">
+                            <small class="text-muted mb-0">Eagle Union</small>
+                          </h5>
                         </div>
                       </div>
-                      <div class="col-6">
+                      <div class="col-4">
                         <div class="text-center py-3">
-                          <h5 class="mb-0 fw-700">
-                            1,673
-                            <small class="text-muted mb-0">Followers</small>
+                          <h5>
+                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/carrier.png">
+                            <small class="text-muted mb-0">항공모함</small>
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="text-center py-3">
+                          <h5 class="font-weight-bold">
+                            No.<span class="fw-300">13</span>
                           </h5>
                         </div>
                       </div>
                       <div class="col-12">
-                        <div class="p-3 text-center">
-                          <a href="javascript:void(0);" class="btn-link font-weight-bold">Follow</a> <span class="text-primary d-inline-block mx-3">●</span>
-                          <a href="javascript:void(0);" class="btn-link font-weight-bold">Message</a> <span class="text-primary d-inline-block mx-3">●</span>
-                          <a href="javascript:void(0);" class="btn-link font-weight-bold">Connect</a>
+                        <div class="row">
+                          <div class="col-auto">
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                                <i class="fal fa-home"></i>
+                                <span class="hidden-sm-down ml-1"> Home</span>
+                              </a>
+                              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                                <i class="fal fa-user"></i>
+                                <span class="hidden-sm-down ml-1"> Profile</span>
+                              </a>
+                              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                                <i class="fal fa-envelope"></i>
+                                <span class="hidden-sm-down ml-1"> Messages</span>
+                              </a>
+                              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                                <i class="fal fa-cog"></i>
+                                <span class="hidden-sm-down ml-1"> Settings</span>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="tab-content" id="v-pills-tabContent">
+                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <h3>
+                                  Home
+                                </h3>
+                                <p> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. </p>
+                                <p> Organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore.</p>
+                                <span class="fs-sm d-flex align-items-center mt-3 flex-wrap">
+                                                                <a href="#" class="mr-1 mt-1" title="Cell A-0012">
+                                                                    <img src="img/thumbs/pic-7.png" class="img-share" alt="pic-7" style="">
+                                                                </a>
+                                                                <a href="#" class="mr-1 mt-1" title="Patient A-473 saliva">
+                                                                    <img src="img/thumbs/pic-8.png" class="img-share" alt="pic-8" style="">
+                                                                </a>
+                                                                <a href="#" class="mr-1 mt-1" title="Patient A-473 blood cells">
+                                                                    <img src="img/thumbs/pic-11.png" class="img-share" alt="pic-11" style="">
+                                                                </a>
+                                                                <a href="#" class="mr-1 mt-1" title="Patient A-473 Membrane O.C">
+                                                                    <img src="img/thumbs/pic-12.png" class="img-share" alt="pic-12" style="">
+                                                                </a>
+                                                            </span>
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                <h3>
+                                  Profile
+                                </h3>
+                                <div class="d-flex flex-row rounded-top mb-3">
+                                  <div class="d-flex flex-row align-items-center mt-1 mb-1">
+                                                                    <span class="mr-2">
+                                                                        <img src="img/demo/avatars/avatar-admin.png" class="rounded-circle profile-image" alt="Dr. Codex Lantern">
+                                                                    </span>
+                                    <div class="info-card-text">
+                                      <div class="fs-lg text-truncate text-truncate-lg">Dr. Codex Lantern</div>
+                                      <span class="text-truncate text-truncate-md opacity-80">drlantern@gotbootstrap.com</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <p>
+                                  Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                                </p>
+                                <p>
+                                  Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic.
+                                </p>
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <h3>
+                                  Messages
+                                </h3>
+                                <ul class="notification">
+                                  <li>
+                                    <a href="#" class="d-flex align-items-center py-2 px-0">
+                                                                        <span class="d-flex flex-column flex-1">
+                                                                            <span class="name">Melissa Ayre</span>
+                                                                            <span class="msg-a fs-sm">Re: New security codes</span>
+                                                                        </span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" class="d-flex align-items-center py-2 px-0">
+                                                                        <span class="d-flex flex-column flex-1">
+                                                                            <span class="name">Adison Lee</span>
+                                                                            <span class="msg-a fs-sm">Msed quia non numquam eius</span>
+                                                                        </span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#" class="d-flex align-items-center py-2 px-0">
+                                                                        <span class="d-flex flex-column flex-1">
+                                                                            <span class="name">Oliver Kopyuv</span>
+                                                                            <span class="msg-a fs-sm">Msed quia non numquam eius</span>
+                                                                        </span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                <h3>Settings</h3>
+                                <div class="alert alert-success">
+                                  <strong>
+                                    Settings saved
+                                  </strong>
+                                  <p class="m-0">
+                                    All your settings changes have been saved!
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card mb-g">
-                    <div class="row row-grid">
-                      <div class="col-12">
-                        <div class="p-3">
-                          <h2 class="mb-0 fs-xl">
-                            입수경로
-                          </h2>
-                        </div>
-                        <div class="card m-1">
-                          <table class="table table-dark">
-                            <tbody>
-                              <tr>
-                                <td>2-1 보스드랍</td>
-                              </tr>
-                              <tr>
-                                <td>상시건조</td>
-                              </tr>
-                              <tr>
-                                <td>Larry</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
+<!--                        <div class="text-center py-3">-->
+<!--                          <h5 class="mb-0 fw-700">연비</h5>-->
+<!--                          <a href="javascript:void(0);" class="width-3 height-2 d-inline-flex align-items-center justify-content-center position-relative h1 text-primary">-->
+<!--                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/oil.png">-->
+<!--                            <span class="badge badge-icon pos-top pos-right">7</span>-->
+<!--                          </a>-->
+<!--                          <a href="javascript:void(0);" class="width-3 height-2 d-inline-flex align-items-center justify-content-center position-relative h1 text-primary">-->
+<!--                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/oil.png">-->
+<!--                            <span class="badge badge-icon pos-top pos-right">9</span>-->
+<!--                          </a>-->
+<!--                          <a href="javascript:void(0);" class="width-3 height-2 d-inline-flex align-items-center justify-content-center position-relative h1 text-primary">-->
+<!--                            <img class="img-thumbnail" src="../../../assets/img/azurlane/icon/oil.png">-->
+<!--                            <span class="badge badge-icon pos-top pos-right">11</span>-->
+<!--                          </a>-->
+<!--                        </div>-->
                       </div>
                     </div>
                   </div>
@@ -149,6 +246,32 @@
                     </div>
                   </div>
                   <!-- //추천장비 -->
+                  <div class="card mb-g">
+                    <div class="row row-grid">
+                      <div class="col-12">
+                        <div class="p-3">
+                          <h2 class="mb-0 fs-xl">
+                            입수경로
+                          </h2>
+                        </div>
+                        <div class="card m-1">
+                          <table class="table table-dark">
+                            <tbody>
+                            <tr>
+                              <td>2-1 보스드랍</td>
+                            </tr>
+                            <tr>
+                              <td>상시건조</td>
+                            </tr>
+                            <tr>
+                              <td>Larry</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <!-- //right -->
               </div>
