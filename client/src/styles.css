@@ -2,3 +2,4 @@
 @import "assets/css/app.bundle.css";
 @import "assets/css/vendors.bundle.css";
 @import "assets/css/beaver.css";
+@import '~ngx-toastr/toastr';
