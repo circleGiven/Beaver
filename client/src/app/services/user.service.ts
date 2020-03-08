@@ -72,7 +72,7 @@ export class UserService {
   }
 
   register(params) {
-    return this.httpClient.post(this.URL_USER + '/register', params);
+    return this.httpClient.post(this.URL_AUTH + '/register', params);
   }
 
   // TODO change to cookie service
