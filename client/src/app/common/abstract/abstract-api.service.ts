@@ -8,7 +8,7 @@ export abstract class AbstractApiService {
   | private Variables
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  private readonly TOKEN_TYPE = 'Bearer';
+  protected readonly TOKEN_TYPE = 'Bearer';
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   | Protected Variables
@@ -51,7 +51,7 @@ export abstract class AbstractApiService {
   | Protected Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  protected getTokenFromStorage(): string {
+  getTokenFromStorage(): string {
     return localStorage.getItem(this.TOKEN_KEY);
   }
 }

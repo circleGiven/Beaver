@@ -49,14 +49,10 @@ export class UserService extends AbstractApiService {
     return this.httpClient.get(this.URL_USER + `/duplicated?email=${email}`);
   }
 
-  isLogged() {
+  // TODO server 에서 토큰 검증
+  isLogged(): boolean {
     const token = this.getTokenFromStorage();
-    // TODO 서버에서 실제로 유효한 토큰인지 체크
     return isEmpty(token) === false;
-  }
-
-  getUser() {
-    return this.httpClient.get(this.URL_USER);
   }
 
   login(params) {
