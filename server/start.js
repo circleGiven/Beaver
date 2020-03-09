@@ -1,11 +1,12 @@
 module.exports = {
   apps: [
     {
-      name: 'Beaver Server',
+      name: 'Beaver-server',
       script: 'dist/main.js',
-      instances: 0,
-      exec_mode: 'cluster',
-      watch: true,
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '1G',
       env: {
         NODE_ENV: 'production',
         PORT: '3000'
