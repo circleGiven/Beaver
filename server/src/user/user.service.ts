@@ -2,11 +2,10 @@ import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {getRepository, Repository} from 'typeorm';
 import { UserEntity } from './user.entity';
-import {LoginUserDto, CreateUserDto, UpdateUserDto} from './dto';
+import {CreateUserDto, UpdateUserDto} from './dto';
 import {UserConstant} from './user.constant';
 import {ResultResponse} from '../common/result.response';
 import * as _ from 'lodash';
-import * as crypto from 'crypto';
 
 @Injectable()
 export class UserService {

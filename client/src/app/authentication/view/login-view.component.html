@@ -1,0 +1,49 @@
+<div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
+  <div class="row">
+    <div class="col col-md-6 col-lg-7 hidden-sm-down">
+      <h2 class="fs-xxl fw-500 mt-4 text-white">
+        Beaver
+        <small class="h3 fw-300 mt-3 mb-5 text-white opacity-60">
+          Azurlane WIKI
+        </small>
+      </h2>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 ml-auto">
+      <h1 class="text-white fw-300 mb-3 d-sm-block d-md-none">
+        로그인
+      </h1>
+      <div class="card p-4 rounded-plus bg-faded">
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control form-control-lg" placeholder="이메일을 입력하세요" formControlName="email"
+                   [class.is-invalid]="(isSubmitted || email.dirty) && email.invalid">
+            <ng-container *ngIf="(isSubmitted || email.dirty) &&  email.invalid">
+              <div class="invalid-feedback" *ngIf="email.errors.required">이메일을 입력해주세요</div>
+              <div class="invalid-feedback" *ngIf="email.errors.pattern">이메일 형식이 아닙니다</div>
+            </ng-container>
+          </div>
+          <div class="form-group">
+            <label class="form-label">비밀번호</label>
+            <input type="password" class="form-control form-control-lg" placeholder="비밀번호를 입력하세요" formControlName="password"
+                   [class.is-invalid]="(isSubmitted || password.dirty) && password.invalid">
+            <ng-container *ngIf="(isSubmitted || password.dirty) &&  password.invalid">
+              <div class="invalid-feedback" *ngIf="password.errors.required">패스워드를 입력해주세요</div>
+            </ng-container>
+          </div>
+          <div class="form-group text-left">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="rememberme">
+              <label class="custom-control-label" for="rememberme"> 30일 동안 로그인 상태를 유지합니다</label>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-lg-6 pl-lg-1 my-2">
+              <button id="js-login-btn" type="submit" class="btn btn-danger btn-block btn-lg waves-effect waves-themed">로그인</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

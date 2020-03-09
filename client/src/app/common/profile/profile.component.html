@@ -1,0 +1,25 @@
+<a href="javascript:" data-toggle="dropdown" class="header-icon d-flex align-items-center justify-content-center ml-2" (click)="changeProfileVisible()">
+  <img src="../../../../assets/img/azurlane/ship_thum/enterprise.png" class="profile-image rounded-circle">
+</a>
+<div class="dropdown-menu dropdown-menu-animated dropdown-lg show" x-placement="bottom-start" style="position: absolute; will-change: top, left; top: 66px; left: 1315px;">
+  <div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
+    <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
+      <span class="mr-2">
+        <img src="../../../../assets/img/azurlane/ship_thum/enterprise.png" class="profile-image rounded-circle">
+      </span>
+      <div class="info-card-text">
+        <div class="fs-lg text-truncate text-truncate-lg">Circlegiven</div>
+        <span class="text-truncate text-truncate-md opacity-80">circlegiven@gmail.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="dropdown-divider m-0"></div>
+  <a href="javascript:" class="dropdown-item" (click)="goToProfileSettings()">
+    <span data-i18n="drpdwn.settings">Settings</span>
+  </a>
+  <div class="dropdown-divider m-0"></div>
+  <a class="dropdown-item fw-500 pt-3 pb-3" href="javascript:" (click)="logOut()">
+    <span data-i18n="drpdwn.page-logout">Logout</span>
+    <span class="float-right fw-n">@circlegiven</span>
+  </a>
+</div>
