@@ -1,5 +1,6 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<ngx-spinner type="square-spin" size="medium" color="#fff">
-  <p style="font-size: 20px; color: white">Loading...</p>
+<!-- full loading -->
+<ngx-spinner [type]="spinnerType" [size]="spinnerSize" [color]="spinnerColor">
+  <p style="font-size: 20px; color: white">{{spinnerMessage}}</p>
 </ngx-spinner>
+<!-- //full loading -->
 <router-outlet></router-outlet>

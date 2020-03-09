@@ -1,2 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/ngx-toastr/toastr.css";
+@import "assets/css/app.bundle.css";
+@import "assets/css/vendors.bundle.css";
+@import "assets/css/beaver.css";
+@import '~ngx-toastr/toastr';

@@ -1,0 +1,12 @@
+<div class="card-body">
+  <a href="javascript:" class="d-flex flex-row align-items-center" (click)="goToPage()">
+    <div class="icon-stack display-3 flex-shrink-0">
+      <img [src]="image" class="icon-stack-3x img-thumbnail">
+    </div>
+    <div class="ml-3">
+      <strong class="color-black">{{name}}</strong>
+      <br>
+      <span class="text-black-50" *ngIf="isExistDescription()">{{description}}</span>
+    </div>
+  </a>
+</div>
