@@ -1,5 +1,8 @@
 import {Component, ElementRef, HostListener} from '@angular/core';
 import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
+import {ToastrService} from 'ngx-toastr';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'div[component-profile]',
@@ -33,7 +36,10 @@ export class ProfileComponent {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   constructor(private readonly elementRef: ElementRef,
-              private readonly router: Router) {
+              private readonly router: Router,
+              private readonly toastr: ToastrService,
+              private readonly spinner: NgxSpinnerService,
+              private readonly userService: UserService) {
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -62,8 +68,21 @@ export class ProfileComponent {
   }
 
   logOut(): void {
-    // TODO logout
+    // loading hide
+    // this.spinner.show();
     this.closeProfile();
+    this.userService.logOut().subscribe(() => {
+      this.closeProfile();
+      // loading hide
+      this.spinner.hide();
+      // alert
+      this.toastr.success('로그아웃 되었습니다.');
+    }, (error) => {
+      // loading hide
+      this.spinner.hide();
+      // alert
+      this.toastr.success('로그아웃을 실패하였습니다.');
+    });
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

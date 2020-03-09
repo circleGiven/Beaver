@@ -69,20 +69,15 @@ export class RegisterViewComponent implements OnInit {
       this.spinner.show();
       this.userService.register(this.form.value).subscribe(
         (data) => {
-          //TODO TEST pending
-          setTimeout(() => {
-            // loading hide
-            this.spinner.hide();
-            this.toastr.success('회원가입에 성공하였습니다.');
-            // route to login page
-            this.router.navigateByUrl('/auth/login').then();
-          }, 1000);
+          // loading hide
+          this.spinner.hide();
+          this.toastr.success('회원가입에 성공하였습니다.');
+          // route to login page
+          this.router.navigateByUrl('/auth/login').then();
         }, (error) => {
-          setTimeout(() => {
-            // loading hide
-            this.spinner.hide();
-            this.toastr.error(error.error.message);
-          }, 1000);
+          // loading hide
+          this.spinner.hide();
+          this.toastr.error(error.error.message);
         });
     }
   }

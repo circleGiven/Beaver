@@ -66,20 +66,14 @@ export class LoginViewComponent implements OnInit {
       // loading show
       this.spinner.show();
       this.userService.login(this.form.value).subscribe((value) => {
-        setTimeout(() => {
-          // loading hide
-          this.spinner.hide();
-          // route to main page
-          this.router.navigateByUrl('/').then();
-        }, 1000);
+        // loading hide
+        this.spinner.hide();
+        // route to main page
+        this.router.navigateByUrl('/').then();
       }, (error) => {
-        setTimeout(() => {
-          // loading hide
-          this.spinner.hide();
-          // TODO test
-          this.userService.removeToken();
-          this.toastr.error(error.error.message);
-        } , 1000);
+        // loading hide
+        this.spinner.hide();
+        this.toastr.error(error.error.message);
       });
     }
   }

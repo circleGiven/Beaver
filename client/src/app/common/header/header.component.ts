@@ -39,12 +39,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       // Authentication에 접근했는지 여부
       if (urlAfterRedirects.startsWith('/auth') === true) {
         const splicedUrl: string = urlAfterRedirects.replace('/auth', '');
-        // login
-        if (splicedUrl.startsWith('/login')) {
+        // check URL
+        if (splicedUrl.startsWith('/login') === true) {
           this.pageType = 'login';
-        }
-        // register
-        else if (splicedUrl.startsWith('/register')) {
+        } else if (splicedUrl.startsWith('/register') === true) {
           this.pageType = 'register';
         }
       } else {
