@@ -46,7 +46,7 @@ export class UserService extends AbstractApiService {
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
   isDuplicatedEmail(email: string) {
-    return this.httpClient.get(this.URL_USER + `/duplicated?email=${email}`);
+    return this.get(this.URL_USER + `/duplicated?email=${email}`);
   }
 
   // TODO server 에서 토큰 검증
@@ -56,7 +56,7 @@ export class UserService extends AbstractApiService {
   }
 
   login(params) {
-    return this.httpClient.post(this.URL_AUTH + '/login', params).pipe(
+    return this.post(this.URL_AUTH + '/login', params).pipe(
       tap((data: AjaxResponse<any>) => {
         if (ValidateUtil.isNotEmptyValue(data) && data.result) {
           // set token
@@ -73,7 +73,7 @@ export class UserService extends AbstractApiService {
   }
 
   register(params) {
-    return this.httpClient.post(this.URL_AUTH + '/register', params);
+    return this.post(this.URL_AUTH + '/register', params);
   }
 
   /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -86,10 +86,6 @@ export class UserService extends AbstractApiService {
 
   private setUserInfoInStorage(user): void {
     localStorage.setItem(this.USER_INFO, JSON.stringify(user));
-  }
-
-  private removeTokenInStorage(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
   }
 
   private removeUserInfoInStorage(): void {

@@ -73,7 +73,6 @@ export class LoginViewComponent implements OnInit {
       }, (error) => {
         // loading hide
         this.spinner.hide();
-        this.toastr.error(error.error.message);
       });
     }
   }
