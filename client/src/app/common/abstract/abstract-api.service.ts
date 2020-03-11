@@ -52,12 +52,12 @@ export abstract class AbstractApiService {
   | Private Method
   |-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-  private errorHandler(error: HttpErrorResponse) {
+  private errorHandler(error: HttpErrorResponse, isUsedToken: boolean = false) {
     const errMsg = error.error.message || 'Server error';
     // alert
     this.toastr.error(errMsg);
     // 토큰 만료
-    if (error.status === 401) {
+    if (isUsedToken && error.status === 401) {
       // 토큰 제거
       this.removeTokenInStorage();
     }
@@ -94,7 +94,7 @@ export abstract class AbstractApiService {
     });
     // 호출
     return this.httpClient.get(url, {headers}).pipe(
-      catchError(error => this.errorHandler(error))
+      catchError(error => this.errorHandler(error, true))
     );
   }
 
@@ -115,7 +115,7 @@ export abstract class AbstractApiService {
     });
     // 호출
     return this.httpClient.post(url, data, {headers}).pipe(
-      catchError(error => this.errorHandler(error))
+      catchError(error => this.errorHandler(error, true))
     );
   }
 }
