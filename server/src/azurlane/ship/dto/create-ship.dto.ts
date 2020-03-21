@@ -12,21 +12,26 @@ export class CreateShipDto {
   @ApiModelProperty({required: false, maxLength: ShipConstant.DTO.SHIP_NAME_MAX_LENGTH, example: '엔터프라이즈'})
   @IsNotEmpty()
   @IsString()
-  readonly cnName?: string;
+  readonly cnName: string;
 
   @ApiModelProperty({required: false, maxLength: ShipConstant.DTO.SHIP_NAME_MAX_LENGTH, example: '엔터프라이즈'})
   @IsNotEmpty()
   @IsString()
-  readonly enName?: string;
+  readonly enName: string;
 
   @ApiModelProperty({required: false, maxLength: ShipConstant.DTO.SHIP_NAME_MAX_LENGTH, example: '엔터프라이즈'})
   @IsNotEmpty()
   @IsString()
-  readonly jpName?: string;
+  readonly jpName: string;
 
-  @ApiModelProperty({required: false, maxLength: 50, example: 'path'})
+  @ApiModelProperty({required: false, maxLength: 50, example: 'src/assets/img/azurlane/ship/'})
   @IsNotEmpty()
   @IsString()
-  readonly image?: string;
+  readonly image: string;
+
+  @ApiModelProperty({required: false, maxLength: 50, example: 'src/assets/img/azurlane/ship_thumb/'})
+  @IsNotEmpty()
+  @IsString()
+  readonly imageThumb: string;
 
 }

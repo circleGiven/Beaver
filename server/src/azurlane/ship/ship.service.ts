@@ -7,12 +7,23 @@ import { ShipConstant } from './ship.constant';
 import { CreateShipDto } from './dto/create-ship.dto';
 import { ResultResponse } from '../../common/result.response';
 import { UpdateShipDto } from './dto/update-ship.dto';
+import { Pagination, PageInterface } from '../../common/paginate';
 
 @Injectable()
 export class ShipService {
   constructor(
     @InjectRepository(ShipEntity)
     private readonly shipRepository: Repository<ShipEntity>) {
+  }
+
+  async list(page: PageInterface) {
+    const [results, total] = await this.shipRepository.findAndCount({
+      take: page.limit,
+      skip: page.page,
+    });
+    return new Pagination({
+      results, total
+    });
   }
 
   async findAll(): Promise<ShipEntity[]> {
@@ -55,6 +66,8 @@ export class ShipService {
     entity.enName = dto.enName;
     entity.jpName = dto.jpName;
     entity.cnName = dto.cnName;
+    entity.image = dto.image;
+    entity.imageThumb = dto.imageThumb;
     const savedShip = await this.shipRepository.save(entity);
 
     return this.buildShipRO(savedShip, HttpStatus.CREATED, ShipConstant.ResultMessage.SUCCESS_SHIP_CREATED);
